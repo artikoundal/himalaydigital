@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Himalaya Digital Marketplace - Header Styles (header.css)
+   Dedicated styles for top navigation, header search bar, and branding
+   ========================================================================== */
+
+/* Header component styles */
+.site-header {
+    width: 100%;
+    position: relative;
+    z-index: 50;
+}

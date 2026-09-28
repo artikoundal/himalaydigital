@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Himalaya Digital Marketplace - Footer Styles (footer.css)
+   Custom styles for footer layout, input effects, and micro-interactions
+   ========================================================================== */
+
+/* Base font application */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Smooth newsletter input focus glow */
+.newsletter-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(21, 74, 120, 0.35);
+}
+
+/* Footer links smoothness */
+#site-footer a {
+    text-decoration: none;
+}

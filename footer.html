@@ -37,35 +37,12 @@
         }
     </script>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Smooth input focus glow */
-        .newsletter-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(21, 74, 120, 0.35);
-        }
-    </style>
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
 </head>
 
-<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-[#9fe8ff] selection:text-[#200063]">
-
-    <!-- Optional Page Content Wrapper (for preview demo) -->
-    <main class="max-w-5xl mx-auto my-12 px-4 text-center">
-        <div class="bg-white rounded-2xl p-8 sm:p-12 shadow-sm border border-slate-200">
-            <span class="inline-block bg-[#9fe8ff]/30 text-[#154a78] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider mb-3">
-                Himachal Pradesh Classifieds
-            </span>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading mb-3">
-                Himalaya Digital Marketplace
-            </h1>
-            <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-                Connect with verified local businesses, jobs, real estate, rentals, homestays, and farm produce across Dharamshala, Kangra, Palampur, Shimla, and beyond.
-            </p>
-        </div>
-    </main>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-end antialiased selection:bg-[#9fe8ff] selection:text-[#200063]">
 
     <!-- =====================================================================
          FOOTER START (Exact match to design using Tailwind CSS)
@@ -160,7 +137,7 @@
                                 <a href="https://pulseplaydigital.com" target="_blank" rel="noopener noreferrer" 
                                    title="PulsePlay Digital"
                                    class="block hover:opacity-95 transition-opacity translate-y-[16px]">
-                                    <img src="./pulseplay-logo.png" alt="PulsePlay Digital - Your Digital Growth Partner" class="h-[34px] sm:h-[42px] lg:h-[44px] w-auto object-contain">
+                                    <img src="./images/pulseplay-logo.png" alt="PulsePlay Digital - Your Digital Growth Partner" class="h-[34px] sm:h-[42px] lg:h-[44px] w-auto object-contain">
                                 </a>
                             </div>
 
@@ -276,28 +253,8 @@
          FOOTER END
          ===================================================================== -->
 
-    <!-- Interactive script for newsletter submit feedback -->
-    <script>
-        function handleNewsletterSubmit(e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('newsletterEmail');
-            const submitBtn = document.getElementById('newsletterSubmitBtn');
-
-            if (!emailInput || !emailInput.checkValidity()) return;
-
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Subscribed! ✓';
-            submitBtn.classList.remove('bg-[#154a78]', 'hover:bg-[#0f385c]');
-            submitBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
-
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
-                submitBtn.classList.add('bg-[#154a78]', 'hover:bg-[#0f385c]');
-                emailInput.value = '';
-            }, 3000);
-        }
-    </script>
+    <!-- External JavaScript for footer interactivity -->
+    <script src="./js/footer.js"></script>
 </body>
 
 </html>
