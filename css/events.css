@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Himalaya Digital Marketplace - Events Styles (events.css)
+   Clean, modern card transitions, tab buttons, and responsive typography
+   ========================================================================== */
+
+/* Simple Event Card Transitions */
+.simple-event-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s ease;
+    will-change: transform, box-shadow;
+}
+
+.simple-event-card:hover {
+    transform: translateY(-4px);
+    border-color: #9fe8ff;
+}
+
+/* Event Switcher Tabs (All, Upcoming Events, Past Events) */
+.event-tab {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    color: #475569;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.event-tab:hover {
+    color: #154a78 !important;
+    background-color: #f0f8fd !important;
+}
+
+.event-tab.active {
+    background-color: #154a78 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(21, 74, 120, 0.25) !important;
+}
+
+.event-tab.active:hover {
+    background-color: #1e5f96 !important;
+    color: #ffffff !important;
+}
+
+/* Image Zoom */
+.simple-event-card img {
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.simple-event-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Scrollbar hiding for responsive 320px tab slider */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Event Details - Himalaya Digital Marketplace</title>
+    <meta name="description" content="Detailed event schedule, highlights, venue directions, and related events in Himachal Pradesh on Himalaya Digital.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skyBrand: '#9fe8ff',
+                        btnNavy: '#154a78',
+                        btnNavyHover: '#0f385c',
+                        footerPurple: '#200063',
+                        footerDark: '#150043',
+                        footerText: '#e6e2ed',
+                        poweredBlue: '#2986bb',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Outfit', 'sans-serif'],
+                        heading: ['Outfit', 'Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/events.css">
+</head>
+
+<body class="bg-[#f0f8fd] text-slate-800 antialiased selection:bg-[#9fe8ff] selection:text-[#200063]">
+
+    <main>
+        <!-- =====================================================================
+             1. HERO BANNER ("EVENT DETAILS") - EXACTLY AS IN ABOUT US PAGE
+             ===================================================================== -->
+        <section class="relative w-full h-[180px] min-[360px]:h-[220px] sm:h-[260px] md:h-[320px] flex items-center justify-center overflow-hidden">
+            <!-- Mountain Panorama Background Image -->
+            <img 
+                src="./images/about-banner.webp" 
+                alt="Himalayan Mountain Panorama - Himalaya Digital Event Details" 
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            >
+            
+            <!-- Subtle Atmospheric Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-sky-900/30 via-transparent to-sky-900/40"></div>
+
+            <!-- Banner Title -->
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white tracking-wider sm:tracking-[0.08em] uppercase font-heading drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                    EVENT DETAILS
+                </h1>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             2. BREADCRUMBS & BACK LINK BAR (RESPONSIVE FROM 320PX UPWARDS)
+             ===================================================================== -->
+        <section class="py-3 sm:py-4 bg-white/70 border-b border-slate-200/80">
+            <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs sm:text-[13px]">
+                <!-- Back Link with Lucide arrow-left -->
+                <a href="events.html" class="inline-flex items-center gap-1.5 font-bold text-[#154a78] hover:text-[#0f385c] transition-colors group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-left w-4 h-4 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    <span>Back to All Events</span>
+                </a>
+
+                <!-- Breadcrumbs -->
+                <nav class="flex items-center gap-1.5 sm:gap-2 text-slate-500 font-medium text-[11px] sm:text-xs">
+                    <a href="about.html" class="hover:text-[#154a78] transition-colors">Home</a>
+                    <span>/</span>
+                    <a href="events.html" class="hover:text-[#154a78] transition-colors">Events</a>
+                    <span>/</span>
+                    <span id="breadcrumbTitle" class="text-slate-800 font-semibold truncate max-w-[140px] min-[360px]:max-w-[200px] sm:max-w-xs">Event Details</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. EVENT DETAIL CONTENT & SIDEBAR (RESPONSIVE FROM 320PX UPWARDS)
+             ===================================================================== -->
+        <section class="py-8 sm:py-12 md:py-14 bg-[#f0f8fd]">
+            <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
+
+                    <!-- =========================================================
+                         LEFT / MAIN CONTENT COLUMN (8 Cols)
+                         ========================================================= -->
+                    <div class="lg:col-span-8 flex flex-col gap-6 sm:gap-8">
+                        
+                        <!-- Event Featured Image Card -->
+                        <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs">
+                            <div class="relative w-full h-[200px] min-[360px]:h-[250px] sm:h-[360px] md:h-[420px] bg-slate-100 overflow-hidden">
+                                <img id="eventImage" src="./images/event-tech-summit.jpg" alt="Event Cover" class="w-full h-full object-cover">
+                                <span id="eventCategoryBadge" class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#154a78] text-white text-[11px] sm:text-xs font-semibold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg shadow-sm">
+                                    Tech & AI
+                                </span>
+                            </div>
+
+                            <!-- Header Section inside Card -->
+                            <div class="p-4 sm:p-6 md:p-8">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2 sm:mb-3">
+                                    <span id="eventDateText" class="text-[#154a78] font-bold text-xs sm:text-sm">November 14 - 16, 2025</span>
+                                    <span>•</span>
+                                    <span id="eventCityText">Dharamshala, Himachal Pradesh</span>
+                                </div>
+
+                                <h2 id="eventMainTitle" class="text-xl min-[360px]:text-2xl sm:text-3xl lg:text-[34px] font-bold text-slate-900 font-heading leading-tight mb-3 sm:mb-4 tracking-tight">
+                                    Himalayan Tech & AI Summit 2025
+                                </h2>
+
+                                <p id="eventHostText" class="text-xs sm:text-sm text-slate-500 font-medium pb-4 sm:pb-6 border-b border-slate-100">
+                                    Organized by <strong class="text-slate-700">PulsePlay Digital & Himalaya Tech Forum</strong>
+                                </p>
+
+                                <!-- Overview Narrative -->
+                                <div class="pt-4 sm:pt-6">
+                                    <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 sm:mb-3">
+                                        About The Event
+                                    </h3>
+                                    <p id="eventFullDescription" class="text-slate-600 text-xs sm:text-sm md:text-[14.5px] leading-relaxed mb-3 sm:mb-4 text-justify sm:text-left">
+                                        Join 500+ innovators, researchers, and developers in Dharamshala exploring AI, Software Engineering, and the 5000 Jobs Mission for the Himalayan region.
+                                    </p>
+                                    <p id="eventExtraDescription" class="text-slate-600 text-xs sm:text-sm md:text-[14.5px] leading-relaxed text-justify sm:text-left">
+                                        This premier gathering provides a common stage for industry mentors, college graduates, startup founders, and artisans to unlock sustainable digital economies in Himachal Pradesh.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Related Events Showcase -->
+                        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-xs">
+                            <div class="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-2.5 mb-5 sm:mb-6">
+                                <div>
+                                    <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading">
+                                        Related Events
+                                    </h3>
+                                    <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Explore more upcoming gatherings in Himachal Pradesh</p>
+                                </div>
+                                <a href="events.html" class="text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] inline-flex items-center gap-1.5 group/all shrink-0">
+                                    <span>View All</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/all:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div id="relatedEventsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                                <!-- Dynamically populated related events -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- =========================================================
+                         RIGHT / SIDEBAR COLUMN (4 Cols)
+                         ========================================================= -->
+                    <div class="lg:col-span-4 flex flex-col gap-5 sm:gap-6 lg:sticky lg:top-6">
+                        
+                        <!-- Event Quick Information Card -->
+                        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-xs">
+                            <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 pb-2 border-b border-slate-100">
+                                Event Details
+                            </h3>
+
+                            <div class="space-y-3.5 sm:space-y-4 text-xs sm:text-[13px]">
+                                <!-- Date -->
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-sky-50 text-[#154a78] flex items-center justify-center shrink-0 text-sm">📅</div>
+                                    <div>
+                                        <span class="block text-slate-400 text-[10.5px] sm:text-[11px] font-semibold uppercase">Date</span>
+                                        <span id="sideDate" class="font-bold text-slate-800">Nov 14 - 16, 2025</span>
+                                    </div>
+                                </div>
+
+                                <!-- Time -->
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-sky-50 text-[#154a78] flex items-center justify-center shrink-0 text-sm">⏰</div>
+                                    <div>
+                                        <span class="block text-slate-400 text-[10.5px] sm:text-[11px] font-semibold uppercase">Time</span>
+                                        <span id="sideTime" class="font-bold text-slate-800">09:30 AM - 05:30 PM IST</span>
+                                    </div>
+                                </div>
+
+                                <!-- Venue Location -->
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-sky-50 text-[#154a78] flex items-center justify-center shrink-0 text-sm">📍</div>
+                                    <div>
+                                        <span class="block text-slate-400 text-[10.5px] sm:text-[11px] font-semibold uppercase">Venue</span>
+                                        <span id="sideVenue" class="font-bold text-slate-800">International Convention Centre, Dharamshala, HP</span>
+                                    </div>
+                                </div>
+
+
+                                <!-- Host -->
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-sky-50 text-[#154a78] flex items-center justify-center shrink-0 text-sm">🏢</div>
+                                    <div>
+                                        <span class="block text-slate-400 text-[10.5px] sm:text-[11px] font-semibold uppercase">Organizer</span>
+                                        <span id="sideHost" class="font-bold text-slate-800">PulsePlay Digital & Tech Forum</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Google Maps Button with Lucide External Link Icon -->
+                            <div class="pt-4 sm:pt-5 mt-4 sm:mt-5 border-t border-slate-100">
+                                <a 
+                                    id="sideMapLink" 
+                                    href="https://maps.google.com/?q=Dharamshala+Himachal+Pradesh" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    class="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[#154a78] font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-colors group/map">
+                                    <span>Open in Google Maps</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-external-link w-3.5 h-3.5 transition-transform group-hover/map:translate-x-0.5 group-hover/map:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M15 3h6v6"></path>
+                                        <path d="10 14 21 3"></path>
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    </svg>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <!-- Share This Event Card -->
+                        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-xs">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3.5">
+                                Share This Event
+                            </h3>
+                            <div class="flex items-center gap-3">
+                                <!-- Facebook -->
+                                <button onclick="shareFacebook()" aria-label="Share on Facebook" title="Share on Facebook"
+                                    class="w-10 h-10 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-[#1877f2] hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- LinkedIn -->
+                                <button onclick="shareLinkedIn()" aria-label="Share on LinkedIn" title="Share on LinkedIn"
+                                    class="w-10 h-10 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-[#0077b5] hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.738-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Twitter (X) -->
+                                <button onclick="shareTwitter()" aria-label="Share on Twitter" title="Share on Twitter"
+                                    class="w-10 h-10 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-800 hover:bg-black hover:text-white hover:border-black hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Script for Dynamic Content & Sharing -->
+    <script>
+        // Event data repository
+        const eventsData = {
+            'tech-summit': {
+                title: 'Himalayan Tech & AI Summit 2025',
+                date: 'November 14 - 16, 2025',
+                time: '09:30 AM - 05:30 PM IST',
+                venue: 'International Convention Centre, Dharamshala, HP',
+                city: 'Dharamshala, Himachal Pradesh',
+                category: 'Tech & AI',
+                categoryBg: '#154a78',
+                price: 'Free Pass / Open Access',
+                image: './images/event-tech-summit.jpg',
+                host: 'PulsePlay Digital & Himalaya Tech Forum',
+                description: 'Join 500+ innovators, researchers, and developers in Dharamshala exploring AI, Software Engineering, and the 5000 Jobs Mission for the Himalayan region.',
+                extraDesc: 'This summit features interactive product keynotes, AI demonstrations, talent recruiting booths, and panel discussions on bridging digital job opportunities in mountain valleys.',
+                mapUrl: 'https://maps.google.com/?q=Dharamshala+Himachal+Pradesh'
+            },
+            'culture-fest': {
+                title: 'Himachal Cultural Heritage & Folk Music Utsav',
+                date: 'December 05 - 07, 2025',
+                time: '04:00 PM - 10:00 PM IST',
+                venue: 'The Ridge Pavilion, Shimla, HP',
+                city: 'Shimla, Himachal Pradesh',
+                category: 'Art & Culture',
+                categoryBg: '#8000ff',
+                price: 'Free Public Entry',
+                image: './images/event-culture-fest.jpg',
+                host: 'Himachal Arts & Tourism Council',
+                description: 'Experience authentic Pahadi Nati, soulful flutes, traditional Kullu folk instruments, dance performances, and Himalayan culinary wonders under starry Shimla skies.',
+                extraDesc: 'A 3-day cultural extravaganza celebrating Himachali roots with master folk performers, community storytelling, and authentic traditional cooking stalls.',
+                mapUrl: 'https://maps.google.com/?q=The+Ridge+Shimla'
+            },
+            'adventure-expo': {
+                title: 'Bir Billing Himalayan Adventure & Eco-Trekking Expo',
+                date: 'December 18 - 20, 2025',
+                time: '08:00 AM - 06:00 PM IST',
+                venue: 'Landing Ground, Bir Billing (Kangra Valley), HP',
+                city: 'Bir Billing, Kangra, HP',
+                category: 'Adventure & Eco',
+                categoryBg: '#00a86b',
+                price: 'Passes at Entry / Open Trial',
+                image: './images/event-adventure-summit.jpg',
+                host: 'Himalayan Aviators & Eco-Trek League',
+                description: 'The premier mountain adventure gathering at world-famous Bir Billing. Paragliding aerobatics, camping workshops, Leave No Trace environmental clinic, and trail runs.',
+                extraDesc: 'Showcasing the newest mountain gear, safety clinics for high-altitude trekking, paragliding flight demonstrations, and workshops on eco-conscious mountain stewardship.',
+                mapUrl: 'https://maps.google.com/?q=Bir+Billing+Himachal+Pradesh'
+            },
+            'startup-conclave': {
+                title: 'Himalayan Angel Investors & Startup Conclave',
+                date: 'January 10 - 11, 2026',
+                time: '10:00 AM - 05:00 PM IST',
+                venue: 'Cedar Woods Heritage Resort, Shimla, HP',
+                city: 'Shimla, Himachal Pradesh',
+                category: 'Startups & Capital',
+                categoryBg: '#e65100',
+                price: 'Delegate Entry',
+                image: './images/event-startup-conclave.jpg',
+                host: 'Himalayas Digital Capital & Startups Hub',
+                description: 'Connecting mountain startups in agro-tech, clean energy, eco-tourism, and handicrafts with angel investors and venture funds looking for high-growth Himalayan businesses.',
+                extraDesc: 'Featuring pitch competitions for local entrepreneurs, roundtables with angel networks, and mentoring clinics tailored to sustainable mountain enterprises.',
+                mapUrl: 'https://maps.google.com/?q=Shimla+Himachal+Pradesh'
+            },
+            'yoga-retreat': {
+                title: 'McLeod Ganj Mindfulness, Yoga & Sound Retreat',
+                date: 'January 24 - 26, 2026',
+                time: '07:00 AM - 06:00 PM IST',
+                venue: 'Upper Bhagsu Pine Meadows, Dharamshala, HP',
+                city: 'McLeod Ganj, Dharamshala, HP',
+                category: 'Yoga & Wellness',
+                categoryBg: '#0284c7',
+                price: 'Open Meditation Sessions',
+                image: './images/event-yoga-retreat.jpg',
+                host: 'Dhyan Himalayan Wellness Guild',
+                description: 'Rejuvenate your soul with sunrise Pranayama, Tibetan singing bowl acoustics, meditation in pine forests, organic Sattvic Himalayan dining, and guided mountain walks.',
+                extraDesc: 'Immerse in holistic sound healing and mindful movement led by certified Himalayan yoga gurus surrounded by cedar trees and snowy Dhauladhar peaks.',
+                mapUrl: 'https://maps.google.com/?q=McLeod+Ganj+Dharamshala'
+            },
+            'handicraft-fair': {
+                title: 'Kullu Shawl, Kangra Art & Handicrafts Fair',
+                date: 'February 06 - 08, 2026',
+                time: '10:00 AM - 07:00 PM IST',
+                venue: 'Mall Road Crafts Pavilion, Manali, HP',
+                city: 'Mall Road, Manali, HP',
+                category: 'Handicrafts & Art',
+                categoryBg: '#d97706',
+                price: 'Free Public Entry',
+                image: './images/event-handicraft-expo.jpg',
+                host: 'Himachal Weavers & Artisans Collective',
+                description: 'Celebrate the timeless master crafts of Himachal. Live wooden handloom weaving demonstrations, miniature Kangra painting masterclasses, and direct-from-artisan exhibitions.',
+                extraDesc: 'Discover genuine Kullu hand-woven shawls, Chamba Rumal embroidery, wooden lacquerware, and authentic Kangra miniature paintings with direct fair pricing.',
+                mapUrl: 'https://maps.google.com/?q=Mall+Road+Manali'
+            }
+        };
+
+        // Parse event ID from URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('id') || 'tech-summit';
+        const data = eventsData[eventId] || eventsData['tech-summit'];
+
+        // Populate Page Contents
+        document.getElementById('pageTitle').textContent = `${data.title} - Himalaya Digital`;
+        document.getElementById('breadcrumbTitle').textContent = data.title;
+        document.getElementById('eventImage').src = data.image;
+        document.getElementById('eventImage').alt = data.title;
+        document.getElementById('eventCategoryBadge').textContent = data.category;
+        document.getElementById('eventCategoryBadge').style.backgroundColor = data.categoryBg;
+        document.getElementById('eventDateText').textContent = data.date;
+        document.getElementById('eventCityText').textContent = data.city;
+        document.getElementById('eventMainTitle').textContent = data.title;
+        document.getElementById('eventHostText').innerHTML = `Organized by <strong class="text-slate-800">${data.host}</strong>`;
+        document.getElementById('eventFullDescription').textContent = data.description;
+        document.getElementById('eventExtraDescription').textContent = data.extraDesc;
+
+        // Sidebar content
+        document.getElementById('sideDate').textContent = data.date;
+        document.getElementById('sideTime').textContent = data.time;
+        document.getElementById('sideVenue').textContent = data.venue;
+        document.getElementById('sideHost').textContent = data.host;
+        document.getElementById('sideMapLink').href = data.mapUrl;
+
+        // Populate Related Events
+        const relatedEl = document.getElementById('relatedEventsList');
+        if (relatedEl) {
+            relatedEl.innerHTML = '';
+            const otherKeys = Object.keys(eventsData).filter(k => k !== eventId);
+            const relatedKeys = otherKeys.slice(0, 2);
+
+            relatedKeys.forEach(k => {
+                const item = eventsData[k];
+                const card = document.createElement('div');
+                card.className = 'border border-slate-200/80 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between bg-white group';
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-36 sm:h-40 overflow-hidden bg-slate-100">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-2.5 left-2.5 text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs" style="background-color: ${item.categoryBg}">
+                                ${item.category}
+                            </span>
+                        </div>
+                        <div class="p-3.5 sm:p-5">
+                            <span class="text-[11px] font-bold text-[#154a78] block mb-1">${item.date} • ${item.city}</span>
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-[#154a78] transition-colors mb-1.5 sm:mb-2 line-clamp-1">
+                                ${item.title}
+                            </h4>
+                            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">${item.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-3.5 sm:p-5 pt-0">
+                        <a href="event-detail.html?id=${k}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                            <span>View Details</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                `;
+                relatedEl.appendChild(card);
+            });
+        }
+
+        // Social Sharing utilities (Facebook, LinkedIn, Twitter)
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=450');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=550');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(`Explore "${data.title}" in Himachal Pradesh on Himalaya Digital: `);
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=450');
+        }
+
+        // Initialize Lucide icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>

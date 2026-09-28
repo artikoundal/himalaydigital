@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Himalaya Digital Marketplace</title>
+    <meta name="description"
+        content="Discover upcoming events, festivals, conferences, and workshops across Dharamshala, Shimla, Manali, and the Himalayan region.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skyBrand: '#9fe8ff',
+                        btnNavy: '#154a78',
+                        btnNavyHover: '#0f385c',
+                        footerPurple: '#200063',
+                        footerDark: '#150043',
+                        footerText: '#e6e2ed',
+                        poweredBlue: '#2986bb',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Outfit', 'sans-serif'],
+                        heading: ['Outfit', 'Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/events.css">
+</head>
+
+<body class="bg-[#f0f8fd] text-slate-800 antialiased selection:bg-[#9fe8ff] selection:text-[#200063]">
+
+    <main>
+        <!-- =====================================================================
+             1. HERO BANNER ("EVENTS") - EXACTLY AS IN ABOUT US PAGE
+             ===================================================================== -->
+        <section
+            class="relative w-full h-[180px] min-[360px]:h-[220px] sm:h-[260px] md:h-[320px] flex items-center justify-center overflow-hidden">
+            <!-- Mountain Panorama Background Image -->
+            <img src="./images/about-banner.webp" alt="Himalayan Mountain Panorama - Himalaya Digital Events"
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+
+            <!-- Subtle Atmospheric Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-sky-900/30 via-transparent to-sky-900/40"></div>
+
+            <!-- Banner Title -->
+            <div class="relative z-10 text-center px-4">
+                <h1
+                    class="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white tracking-wider sm:tracking-[0.08em] uppercase font-heading drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                    EVENTS
+                </h1>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             2. CLEAN FILTER & SEARCH BAR (RESPONSIVE FROM 320PX UPWARDS)
+             ===================================================================== -->
+        <section class="py-6 sm:py-8 bg-[#f0f8fd]">
+            <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12">
+
+                <!-- Clean Tabs: All, Upcoming Events, Past Events & Simple Search -->
+                <div
+                    class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 pb-6 border-b border-slate-200/80">
+
+                    <!-- Clean Responsive Tab Switcher -->
+                    <div
+                        class="flex items-center p-1 sm:p-1.5 bg-white border border-slate-200/90 rounded-2xl shadow-2xs max-w-full overflow-x-auto no-scrollbar gap-1 self-start sm:self-auto">
+                        <button onclick="switchEventTab('all', this)"
+                            class="event-tab active px-3.5 min-[360px]:px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0">
+                            All
+                        </button>
+                        <button onclick="switchEventTab('upcoming', this)"
+                            class="event-tab px-3.5 min-[360px]:px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0">
+                            Upcoming Events
+                        </button>
+                        <button onclick="switchEventTab('past', this)"
+                            class="event-tab px-3.5 min-[360px]:px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0">
+                            Past Events
+                        </button>
+                    </div>
+
+                    <!-- Clean Responsive Search Box -->
+                    <div class="relative w-full lg:w-72 shrink-0">
+                        <input type="text" id="searchEventsInput" oninput="filterSearch(this.value)"
+                            placeholder="Search events by title or city..."
+                            class="w-full bg-white border border-slate-300/80 rounded-xl pl-9 pr-4 py-2 sm:py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition shadow-2xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-search w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. CLEAN & ATTRACTIVE EVENT CARDS GRID
+             ===================================================================== -->
+        <section class="pb-16 sm:pb-20 bg-[#f0f8fd]">
+            <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12">
+
+                <!-- Events Grid -->
+                <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+
+                    <!-- ==========================================
+                         EVENT 1: TECH & AI SUMMIT (UPCOMING)
+                         ========================================== -->
+                    <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                        data-type="upcoming" data-title="Himalayan Tech & AI Summit 2025" data-city="Dharamshala">
+                        <div>
+                            <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+                                <img src="./images/event-tech-summit.jpg" alt="Himalayan Tech & AI Summit"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span
+                                        class="bg-[#154a78] text-white text-[10.5px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-xs">
+                                        Tech & AI
+                                    </span>
+                                    <span
+                                        class="bg-emerald-600 text-white text-[10.5px] sm:text-[11px] font-semibold px-2 py-1 rounded-md shadow-xs">
+                                        Upcoming
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 sm:p-6">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2">
+                                    <span class="text-[#154a78] font-bold">14 - 16 Nov, 2025</span>
+                                    <span>•</span>
+                                    <span>Dharamshala, HP</span>
+                                </div>
+
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 leading-snug group-hover:text-[#154a78] transition-colors">
+                                    Himalayan Tech & AI Summit 2025
+                                </h3>
+
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+                                    Deep Tech, AI innovations, and creating 5,000 technology jobs in Himachal Pradesh
+                                    and the Himalayan region.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-0">
+                            <a href="event-detail.html?id=tech-summit"
+                                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         EVENT 2: HIMACHAL CULTURAL UTSAV (UPCOMING)
+                         ========================================== -->
+                    <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                        data-type="upcoming" data-title="Himachal Cultural Heritage & Folk Music Utsav"
+                        data-city="Shimla">
+                        <div>
+                            <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+                                <img src="./images/event-culture-fest.jpg" alt="Himachal Folk Utsav in Shimla"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span
+                                        class="bg-[#8000ff] text-white text-[10.5px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-xs">
+                                        Art & Culture
+                                    </span>
+                                    <span
+                                        class="bg-emerald-600 text-white text-[10.5px] sm:text-[11px] font-semibold px-2 py-1 rounded-md shadow-xs">
+                                        Upcoming
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 sm:p-6">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2">
+                                    <span class="text-[#154a78] font-bold">05 - 07 Dec, 2025</span>
+                                    <span>•</span>
+                                    <span>The Ridge, Shimla</span>
+                                </div>
+
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 leading-snug group-hover:text-[#154a78] transition-colors">
+                                    Himachal Folk Music & Heritage Utsav
+                                </h3>
+
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+                                    Pahadi Nati performances, flute melodies, traditional attire showcases, and
+                                    Himachali Dham food festivals.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-0">
+                            <a href="event-detail.html?id=culture-fest"
+                                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         EVENT 3: BIR BILLING ADVENTURE EXPO (UPCOMING)
+                         ========================================== -->
+                    <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                        data-type="upcoming" data-title="Bir Billing Himalayan Adventure & Eco-Trekking Expo"
+                        data-city="Bir Billing">
+                        <div>
+                            <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+                                <img src="./images/event-adventure-summit.jpg" alt="Bir Billing Adventure Expo"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span
+                                        class="bg-[#00a86b] text-white text-[10.5px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-xs">
+                                        Adventure & Eco
+                                    </span>
+                                    <span
+                                        class="bg-emerald-600 text-white text-[10.5px] sm:text-[11px] font-semibold px-2 py-1 rounded-md shadow-xs">
+                                        Upcoming
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 sm:p-6">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2">
+                                    <span class="text-[#154a78] font-bold">18 - 20 Dec, 2025</span>
+                                    <span>•</span>
+                                    <span>Bir Billing, Kangra</span>
+                                </div>
+
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 leading-snug group-hover:text-[#154a78] transition-colors">
+                                    Bir Billing Adventure & Trek Expo
+                                </h3>
+
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+                                    World paragliding displays, eco-trekking gear, Leave No Trace clinics, and outdoor
+                                    mountain expeditions.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-0">
+                            <a href="event-detail.html?id=adventure-expo"
+                                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         EVENT 4: STARTUP CONCLAVE (UPCOMING)
+                         ========================================== -->
+                    <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                        data-type="upcoming" data-title="Himalayan Angel Investors & Startup Conclave"
+                        data-city="Shimla">
+                        <div>
+                            <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+                                <img src="./images/event-startup-conclave.jpg" alt="Himalayan Startup Conclave Shimla"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span
+                                        class="bg-[#e65100] text-white text-[10.5px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-xs">
+                                        Startups
+                                    </span>
+                                    <span
+                                        class="bg-emerald-600 text-white text-[10.5px] sm:text-[11px] font-semibold px-2 py-1 rounded-md shadow-xs">
+                                        Upcoming
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 sm:p-6">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2">
+                                    <span class="text-[#154a78] font-bold">10 - 11 Jan, 2026</span>
+                                    <span>•</span>
+                                    <span>Shimla, HP</span>
+                                </div>
+
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 leading-snug group-hover:text-[#154a78] transition-colors">
+                                    Himalayan Angel Investors Conclave
+                                </h3>
+
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+                                    Connecting mountain startups in agro-tech, clean energy, and organic horticulture
+                                    with angel investors.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-0">
+                            <a href="event-detail.html?id=startup-conclave"
+                                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         EVENT 5: MCLEOD GANJ YOGA RETREAT (PAST EVENT)
+                         ========================================== -->
+                    <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                        data-type="past" data-title="McLeod Ganj Mindfulness, Yoga & Sound Retreat"
+                        data-city="Dharamshala">
+                        <div>
+                            <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+                                <img src="./images/event-yoga-retreat.jpg" alt="Yoga Retreat in Dharamshala"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span
+                                        class="bg-[#0284c7] text-white text-[10.5px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-xs">
+                                        Yoga & Wellness
+                                    </span>
+                                    <span
+                                        class="bg-slate-700 text-white text-[10.5px] sm:text-[11px] font-semibold px-2 py-1 rounded-md shadow-xs">
+                                        Past Event
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 sm:p-6">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2">
+                                    <span class="text-slate-600 font-bold">15 - 17 Sep, 2024</span>
+                                    <span>•</span>
+                                    <span>McLeod Ganj, Dharamshala</span>
+                                </div>
+
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 leading-snug group-hover:text-[#154a78] transition-colors">
+                                    McLeod Ganj Yoga & Sound Retreat
+                                </h3>
+
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+                                    Tibetan singing bowl healing, sunrise Pranayama in pine meadows, and guided mountain
+                                    meditation sessions.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-0">
+                            <a href="event-detail.html?id=yoga-retreat"
+                                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         EVENT 6: KULLU & KANGRA HANDICRAFTS FAIR (PAST EVENT)
+                         ========================================== -->
+                    <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                        data-type="past" data-title="Kullu Shawl, Kangra Art & Handicrafts Fair" data-city="Manali">
+                        <div>
+                            <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
+                                <img src="./images/event-handicraft-expo.jpg" alt="Himachal Handicrafts Fair Manali"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span
+                                        class="bg-[#d97706] text-white text-[10.5px] sm:text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-xs">
+                                        Handicrafts
+                                    </span>
+                                    <span
+                                        class="bg-slate-700 text-white text-[10.5px] sm:text-[11px] font-semibold px-2 py-1 rounded-md shadow-xs">
+                                        Past Event
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 sm:p-6">
+                                <div class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-slate-500 mb-2">
+                                    <span class="text-slate-600 font-bold">02 - 04 Aug, 2024</span>
+                                    <span>•</span>
+                                    <span>Mall Road, Manali</span>
+                                </div>
+
+                                <h3
+                                    class="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2 leading-snug group-hover:text-[#154a78] transition-colors">
+                                    Kullu Shawl & Kangra Art Fair
+                                </h3>
+
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+                                    Live wooden loom weaving, delicate Kangra miniature painting workshops, and
+                                    authentic artisan stalls.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 sm:px-6 sm:pb-6 pt-0">
+                            <a href="event-detail.html?id=handicraft-fair"
+                                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#154a78] hover:text-[#0f385c] group/link">
+                                <span>View Details</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- No Results Notice (hidden by default) -->
+                <div id="noResults"
+                    class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
+                    <p class="text-slate-500 text-sm">No events found matching your search.</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Scripts -->
+    <script>
+        let currentTab = 'all';
+        let searchQuery = '';
+
+        function switchEventTab(tab, btn) {
+            currentTab = tab;
+            document.querySelectorAll('.event-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+            btn.classList.add('active');
+            renderEvents();
+        }
+
+        function filterSearch(val) {
+            searchQuery = val.toLowerCase().trim();
+            renderEvents();
+        }
+
+        function renderEvents() {
+            const cards = document.querySelectorAll('.simple-event-card');
+            let visible = 0;
+
+            cards.forEach(card => {
+                const type = card.getAttribute('data-type');
+                const title = card.getAttribute('data-title').toLowerCase();
+                const city = card.getAttribute('data-city').toLowerCase();
+
+                const matchesTab = (currentTab === 'all' || type === currentTab);
+                const matchesSearch = !searchQuery || title.includes(searchQuery) || city.includes(searchQuery);
+
+                if (matchesTab && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visible++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            const noRes = document.getElementById('noResults');
+            if (noRes) {
+                if (visible === 0) noRes.classList.remove('hidden');
+                else noRes.classList.add('hidden');
+            }
+        }
+
+        // Initialize Lucide icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>
