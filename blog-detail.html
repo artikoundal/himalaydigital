@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Blog Details - Himalaya Digital Marketplace</title>
+    <meta name="description"
+        content="Read in-depth stories, insights, and expert perspectives on Himalayan technology, handicrafts, agriculture, and lifestyle.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skyBrand: '#9fe8ff',
+                        btnNavy: '#154a78',
+                        btnNavyHover: '#0f385c',
+                        footerPurple: '#200063',
+                        footerDark: '#150043',
+                        footerText: '#e6e2ed',
+                        poweredBlue: '#2986bb',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Outfit', 'sans-serif'],
+                        heading: ['Outfit', 'Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Component Stylesheet -->
+    <link rel="stylesheet" href="./css/blog.css">
+</head>
+
+<body class="bg-[#f0f8fd] text-slate-800 antialiased selection:bg-[#9fe8ff] selection:text-[#200063]">
+
+    <main>
+        <!-- =====================================================================
+             1. HERO BANNER ("BLOG DETAILS") - EXACT SAME MOUNTAIN BANNER
+             ===================================================================== -->
+        <section
+            class="relative w-full h-[180px] min-[360px]:h-[220px] sm:h-[260px] md:h-[320px] flex items-center justify-center overflow-hidden">
+            <!-- Mountain Panorama Background Image -->
+            <img src="./images/about-banner.webp" alt="Himalayan Mountain Panorama - Blog Details"
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+
+            <!-- Atmospheric Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-sky-900/30 via-transparent to-sky-900/40"></div>
+
+            <!-- Banner Title -->
+            <div class="relative z-10 text-center px-4">
+                <h1
+                    class="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white tracking-wider sm:tracking-[0.08em] uppercase font-heading drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                    BLOG DETAILS
+                </h1>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             2. TOP NAVIGATION / BREADCRUMB
+             ===================================================================== -->
+        <section class="py-4 sm:py-5 bg-[#f0f8fd] border-b border-slate-200/80">
+            <div class="max-w-[1080px] mx-auto px-3 sm:px-6 md:px-10">
+                <div class="flex items-center justify-between">
+                    <a href="blog.html"
+                        class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#154a78] hover:text-[#0f385c] py-2 px-3.5 sm:px-4 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all group">
+                        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"></i>
+                        <span>Back to All Blogs</span>
+                    </a>
+
+                    <!-- Category indicator pill -->
+                    <span id="breadcrumbCategory" class="text-xs font-semibold px-3 py-1 rounded-lg bg-white border border-slate-200/80 text-slate-700 shadow-2xs">
+                        Article
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. MAIN ARTICLE CONTAINER (RESPONSIVE 320PX UPWARDS)
+             ===================================================================== -->
+        <article class="py-8 sm:py-12 bg-[#f0f8fd]">
+            <div class="max-w-[1080px] mx-auto px-3 sm:px-6 md:px-10">
+                <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs p-4 min-[360px]:p-6 sm:p-10 lg:p-14">
+
+                    <!-- Header Meta Info -->
+                    <div class="mb-6 sm:mb-8">
+                        <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-medium text-slate-500 mb-3 sm:mb-4">
+                            <span id="postBadge"
+                                class="bg-[#154a78] text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
+                                Tech & Innovation
+                            </span>
+                            <span class="flex items-center gap-1.5 text-slate-500">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                                <span id="postDate">October 12, 2025</span>
+                            </span>
+                            <span class="text-slate-300">&bull;</span>
+                            <span class="flex items-center gap-1.5 text-slate-500">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
+                                <span id="postReadTime">6 min read</span>
+                            </span>
+                        </div>
+
+                        <!-- Post Main Title -->
+                        <h1 id="postTitle"
+                            class="text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-900 font-heading leading-tight sm:leading-snug mb-5">
+                            The Mountain Workation Revolution: Why Global Techies Are Choosing Dharamshala & Manali
+                        </h1>
+
+                        <!-- Author Card Row -->
+                        <div class="flex items-center justify-between flex-wrap gap-4 py-4 border-y border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div id="postAuthorAvatar"
+                                    class="w-11 h-11 rounded-full bg-[#154a78] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+                                    AK
+                                </div>
+                                <div>
+                                    <h4 id="postAuthorName" class="text-sm font-semibold text-slate-900 leading-tight">
+                                        Arun Katoch
+                                    </h4>
+                                    <p id="postAuthorRole" class="text-xs text-slate-500 leading-tight mt-0.5">
+                                        Digital Nomad & Lead Systems Architect
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Share Buttons (Facebook, LinkedIn, Twitter) -->
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-medium text-slate-400 mr-1 hidden min-[400px]:inline">Share:</span>
+                                <!-- Facebook -->
+                                <button onclick="shareFacebook()" aria-label="Share on Facebook" title="Share on Facebook"
+                                    class="w-9 h-9 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </button>
+                                <!-- LinkedIn -->
+                                <button onclick="shareLinkedIn()" aria-label="Share on LinkedIn" title="Share on LinkedIn"
+                                    class="w-9 h-9 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.738-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </button>
+                                <!-- Twitter (X) -->
+                                <button onclick="shareTwitter()" aria-label="Share on Twitter" title="Share on Twitter"
+                                    class="w-9 h-9 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 hover:bg-black hover:text-white hover:border-black hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Hero Image -->
+                    <div class="relative w-full h-[220px] min-[360px]:h-[280px] sm:h-[380px] lg:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden mb-8 shadow-xs">
+                        <img id="postImage" src="./images/blog-remote-work.jpg" alt="Featured Article Photo"
+                            class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Key Highlights / Takeaways Box -->
+                    <div id="takeawaysBox" class="bg-[#f0f8fd] border border-[#9fe8ff] rounded-2xl p-5 sm:p-6 mb-8">
+                        <div class="flex items-center gap-2 text-[#154a78] font-bold text-sm sm:text-base font-heading mb-3">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-[#154a78]"></i>
+                            <span>Key Article Highlights</span>
+                        </div>
+                        <ul id="takeawaysList" class="space-y-2 text-xs sm:text-sm text-slate-700">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- Rich Article Body -->
+                    <div id="postContent" class="blog-prose leading-relaxed">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Article Footer: Author Bio & Share Again -->
+                    <div class="pt-8 sm:pt-10 mt-10 sm:mt-12 border-t border-slate-200/90">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 bg-slate-50 p-5 sm:p-7 rounded-2xl border border-slate-200/80">
+                            <div class="flex items-center gap-4">
+                                <div id="postAuthorAvatarBottom"
+                                    class="w-12 h-12 rounded-full bg-[#154a78] text-white flex items-center justify-center font-bold text-base shrink-0 shadow-xs">
+                                    AK
+                                </div>
+                                <div>
+                                    <h4 class="text-sm sm:text-base font-bold text-slate-900">
+                                        Written by <span id="postAuthorNameBottom">Arun Katoch</span>
+                                    </h4>
+                                    <p id="postAuthorBio" class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                                        Writing on technology democratization, mountain economies, and remote-first workplace culture from Himachal Pradesh.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2 self-end sm:self-auto shrink-0">
+                                <span class="text-xs font-semibold text-slate-500 mr-1">Share:</span>
+                                <button onclick="shareFacebook()" aria-label="Share on Facebook"
+                                    class="w-9 h-9 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-[#1877f2] hover:text-white transition-all shadow-2xs">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </button>
+                                <button onclick="shareLinkedIn()" aria-label="Share on LinkedIn"
+                                    class="w-9 h-9 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-[#0077b5] hover:text-white transition-all shadow-2xs">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.738-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </button>
+                                <button onclick="shareTwitter()" aria-label="Share on Twitter"
+                                    class="w-9 h-9 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all shadow-2xs">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+        <!-- =====================================================================
+             4. RELATED ARTICLES (RESPONSIVE FROM 320PX UPWARDS)
+             ===================================================================== -->
+        <section class="py-10 sm:py-14 bg-[#f0f8fd]">
+            <div class="max-w-[1080px] mx-auto px-3 sm:px-6 md:px-10">
+                <div class="flex items-center justify-between mb-6 sm:mb-8">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 font-heading">
+                            Related Stories
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                            More reads from Himalaya Digital marketplace
+                        </p>
+                    </div>
+                    <a href="blog.html"
+                        class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                        <span>View All Blogs</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Related Cards Grid -->
+                <div id="relatedArticlesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Script for Dynamic Content & Sharing -->
+    <script>
+        // Complete Blog Repository
+        const blogsData = {
+            'remote-work': {
+                id: 'remote-work',
+                title: 'The Mountain Workation Revolution: Why Global Techies Are Choosing Dharamshala & Manali',
+                category: 'Tech & Innovation',
+                categoryBadgeColor: '#154a78',
+                date: 'October 12, 2025',
+                readTime: '6 min read',
+                author: 'Arun Katoch',
+                authorRole: 'Digital Nomad & Lead Systems Architect',
+                authorAvatar: 'AK',
+                authorBio: 'Specializes in distributed software infrastructure and mountain co-working ecosystems across Himachal.',
+                image: './images/blog-remote-work.jpg',
+                takeaways: [
+                    'Over 1,200 tech professionals and startup founders have adopted Himachal workations in 2024-2025.',
+                    'Optical fiber coverage reaching tier-2 valley towns with 300+ Mbps redundant lines.',
+                    'A 40% reduction in everyday living costs alongside massive improvements in mental focus and wellbeing.'
+                ],
+                content: `
+                    <p class="lead text-lg font-medium text-slate-700">For decades, software engineers and creative professionals believed high-impact tech careers required enduring crowded metros, endless traffic bottlenecks, and soaring urban rents. Today, a quiet revolution is unfolding along the cedar-flanked ridges of the Dhauladhar mountains.</p>
+
+                    <h2>The Fiber Revolution in the Foothills</h2>
+                    <p>What changed? Above all, infrastructure. Where mountain towns once suffered frequent outages and patchy mobile connectivity, modern optical fiber networks now traverse Kangra, Kullu, and Shimla districts. Co-working retreats in Dharamshala and Naggar offer dual-redundant 300 Mbps connections, power backup, ergonomic setups, and artisanal Himalayan coffee.</p>
+
+                    <blockquote>"Coding in view of snow-clad peaks while breathing pristine air is not just a luxury—it produces measurable cognitive clarity. Bugs that took days in crowded offices get resolved in hours here."</blockquote>
+
+                    <h2>The Economics of Mountain Living</h2>
+                    <p>The economic equation is equally compelling. Compared to Delhi NCR, Mumbai, or Bengaluru, the monthly living expenses for a digital professional in Himachal are between 35% to 50% lower, even when staying at boutique mountain homestays with home-cooked local meals.</p>
+                    
+                    <p>Instead of commuting two hours daily, tech workers spend their mornings on nature trails, practicing yoga, or savoring freshly brewed Kangra green tea before logging in for team standups.</p>
+
+                    <h2>Building a Sustainable Valley Ecosystem</h2>
+                    <p>Crucially, this influx is not operating in a vacuum. Under initiatives like the 5,000 Jobs Mission by PulsePlay Digital, visiting nomad engineers regularly host hackathons, mentor local college students in Dharamshala and Kangra, and hire regional talent for growing startups.</p>
+
+                    <p>The mountain workation is no longer a temporary summer escape; it is laying the bedrock for a decentralized, high-value tech economy that respects and enriches Himalayan nature.</p>
+                `,
+                related: ['jobs-mission', 'ecotourism', 'handicrafts']
+            },
+
+            'handicrafts': {
+                id: 'handicrafts',
+                title: 'Preserving Heritage on Loom: The Resilient Artisans of Kullu & Kinnaur Shawls',
+                category: 'Artisans & Crafts',
+                categoryBadgeColor: '#200063',
+                date: 'October 08, 2025',
+                readTime: '5 min read',
+                author: 'Sunita Sharma',
+                authorRole: 'Textile Historian & Artisan Guild Advisor',
+                authorAvatar: 'SS',
+                authorBio: 'Works closely with weaving self-help groups and natural dye cooperatives across Himachal Pradesh.',
+                image: './images/blog-handicrafts.jpg',
+                takeaways: [
+                    'Traditional geometric patterns carry centuries of cultural symbolism unique to individual mountain valleys.',
+                    'Shift from synthetic yarns back to hand-spun pure wool with walnut and pomegranate natural dyes.',
+                    'Direct-to-consumer digital marketplace eliminates middlemen, tripling weaver household earnings.'
+                ],
+                content: `
+                    <p class="lead text-lg font-medium text-slate-700">Inside a sunlit mud-timber room in a Kullu valley village, the steady, rhythmic clatter of the pit loom echoes through the crisp afternoon air. Here, Master Weaver Dev Raj carefully interlaces strands of natural sheep wool, following geometric motifs passed down through five generations.</p>
+
+                    <h2>A Language Written in Geometric Threads</h2>
+                    <p>Kullu and Kinnauri shawls are not merely garments; they are tapestries of historical identity. The iconic dovetail, diamond, and chevron patterns signify mountain passes, sacred rivers, and local deities. Authentic handloom shawls require between 3 to 14 days of dedicated handcrafting depending on the complexity of the border.</p>
+
+                    <blockquote>"When a machine mimics our patterns, it lacks the soul, tension, and warmth of hands that grew up in these mountains. Real wool breathes with the wearer."</blockquote>
+
+                    <h2>The Revival of Natural Dyes</h2>
+                    <p>While mass-produced acrylic imitations flooded urban markets in the 1990s, today's discerning buyers are actively seeking genuine artisanal purity. Weavers are returning to ancestral botanical dyes: deep walnut hulls for rich browns, pomegranate rinds for earthen ochres, and wild madder for warm terracotta reds.</p>
+
+                    <h2>Connecting Weavers to the Global Cloud</h2>
+                    <p>Through the Himalaya Digital Marketplace, women weavers and artisan cooperatives can now showcase their craft directly to national and international collectors with certified authenticity tags, ensuring fair wages that keep youth inspired to preserve their ancestral heritage.</p>
+                `,
+                related: ['culture-fest', 'remote-work', 'apple-farming']
+            },
+
+            'apple-farming': {
+                id: 'apple-farming',
+                title: "From Mountain Orchards to Global Markets: Tech Transforming Himachal's Apple Belt",
+                category: 'Agriculture',
+                categoryBadgeColor: '#0d7a5f',
+                date: 'September 29, 2025',
+                readTime: '4 min read',
+                author: 'Vikram Negi',
+                authorRole: 'Agri-Tech Specialist & Orchardist',
+                authorAvatar: 'VN',
+                authorBio: 'Pioneering high-density apple orchards and IoT moisture sensors across Upper Shimla and Kinnaur.',
+                image: './images/blog-apple-farming.jpg',
+                takeaways: [
+                    'High-density rootstocks yield up to three times more produce per acre than conventional trees.',
+                    'IoT soil sensors and automated weather warnings protect fruit against sudden spring hail.',
+                    'Controlled Atmosphere (CA) cold storage facilities enable year-round premium market access.'
+                ],
+                content: `
+                    <p class="lead text-lg font-medium text-slate-700">In the terraced heights of Kinnaur and Kotgarh, perched at over 7,500 feet above sea level, apple farming is undergoing its most radical transformation since Samuel Evans Stokes introduced the fruit to Shimla hills over a century ago.</p>
+
+                    <h2>The High-Density Precision Wave</h2>
+                    <p>Facing unpredictable snowfall patterns and shifting chilling hours, progressive orchardists are transitioning to modern high-density rootstocks (M9 and MM106). These compact trees begin commercial cropping within three years, compared to eight to ten years for legacy seedling varieties.</p>
+
+                    <blockquote>"Precision farming in mountains requires listening to data: soil humidity, canopy temperature, and blossom timing. Tech helps us nurture nature with surgical care."</blockquote>
+
+                    <h2>IoT and Anti-Hail Canopies</h2>
+                    <p>Solar-powered micro-stations installed directly in orchards track ambient temperature and soil moisture levels, sending real-time advisory alerts to growers' smartphones. Automated drip fertigation delivers exact nutrient mixes straight to root zones, cutting water consumption by over 60%.</p>
+
+                    <h2>Cold Chain Logistics: From Tree to Dining Table</h2>
+                    <p>State-of-the-art Controlled Atmosphere (CA) cold stores throughout Himachal ensure that harvested Royal Delicious, Gala, and Red Velox apples maintain their crisp crunch and natural sugars for months, commanding top prices in urban metros without distress selling.</p>
+                `,
+                related: ['ecotourism', 'jobs-mission', 'handicrafts']
+            },
+
+            'ecotourism': {
+                id: 'ecotourism',
+                title: 'Slow Living in the Clouds: Sustainable Homestays Redefining Himalayan Travel',
+                category: 'Eco-Tourism',
+                categoryBadgeColor: '#b45309',
+                date: 'September 24, 2025',
+                readTime: '5 min read',
+                author: 'Riya Thakur',
+                authorRole: 'Sustainable Tourism Consultant',
+                authorAvatar: 'RT',
+                authorBio: 'Specializes in heritage conservation homestays and community-based eco-travel trails.',
+                image: './images/blog-ecotourism.jpg',
+                takeaways: [
+                    'Traditional Kathkuni earthquake-resistant wood and stone architecture preserves local aesthetics.',
+                    'Farm-to-table dining celebrating indigenous grains like Kodra (finger millet) and Bathu.',
+                    'Over 85% of travel spend stays within the local village community rather than external tour operators.'
+                ],
+                content: `
+                    <p class="lead text-lg font-medium text-slate-700">A heavy wooden door creaks open to reveal a panoramic balcony suspended above sea of morning clouds in Jibhi. There are no plastic amenities or blaring televisions—only the smell of cedar wood, crackling pinecones in the bukhari, and the distant murmur of a glacial stream.</p>
+
+                    <h2>The Kathkuni Renaissance</h2>
+                    <p>For decades, concrete structures threatened to dilute Himachal's picturesque architectural character. Today, a heartening revival of Kathkuni—the ancient earthquake-resilient construction technique interlocking deodar wood beams and dressed slate without mortar—is leading the sustainable hospitality revolution.</p>
+
+                    <blockquote>"Guests don't come to mountains to sleep in glass towers. They seek solace in earthen walls, home-ground flour bread, and evening conversations by the fireplace."</blockquote>
+
+                    <h2>Zero-Mile Mountain Dining</h2>
+                    <p>Eco-homestays are championing authentic Pahadi cuisine: fresh Siddu steamed with walnut and poppy seed fillings, fragrant black gram Madra, and seasonal wild greens plucked from neighboring terraces just minutes before cooking.</p>
+
+                    <h2>Empowering Local Mountain Communities</h2>
+                    <p>By booking verified local homestays through digital platforms, travelers directly fund village schools, preserve centuries-old homes, and create sustainable livelihoods that encourage families to maintain their heritage orchards and cultural traditions.</p>
+                `,
+                related: ['culture-fest', 'remote-work', 'apple-farming']
+            },
+
+            'jobs-mission': {
+                id: 'jobs-mission',
+                title: 'Building Mountain Silicon Valley: Inside the Mission for 5,000 High-Tech Valley Jobs',
+                category: 'Tech & Innovation',
+                categoryBadgeColor: '#154a78',
+                date: 'September 18, 2025',
+                readTime: '7 min read',
+                author: 'Deepak Rana',
+                authorRole: 'VP of Engineering & Ecosystem Lead',
+                authorAvatar: 'DR',
+                authorBio: 'Heads digital skills development and enterprise engineering hubs in Dharamshala.',
+                image: './images/blog-jobs-mission.jpg',
+                takeaways: [
+                    'The 5,000 Jobs by Dec 2025 initiative has trained over 2,800 youth in modern full-stack and AI skills.',
+                    'Reverse migration: Senior engineering leads returning from Bangalore and Gurgaon to work from Kangra.',
+                    'Creating distributed product development centers that serve Fortune 500 and global clients.'
+                ],
+                content: `
+                    <p class="lead text-lg font-medium text-slate-700">For decades, young talent graduating from Himachal's premier colleges faced an inevitable dilemma: leave their families and mountain homeland to seek software careers in congested metropolitan centers, or settle for limited local opportunities.</p>
+
+                    <h2>The 5,000 Jobs by December 2025 Vision</h2>
+                    <p>Initiated by PulsePlay Digital, the 5,000 Jobs initiative set out with a bold objective: prove that world-class enterprise software, AI modeling, UX design, and global digital marketing can be conceived, built, and deployed right from the Kangra valley.</p>
+
+                    <blockquote>"Talent is evenly distributed across every valley, but opportunity was historically concentrated in a handful of mega-cities. We are rewriting that balance."</blockquote>
+
+                    <h2>Reverse Migration in Action</h2>
+                    <p>One of the most encouraging trends is the influx of senior technology leaders returning home. Seasoned product managers, cloud architects, and data scientists are choosing Dharamshala, Palampur, and Shimla for their families' health while continuing to spearhead high-impact global technology architectures.</p>
+
+                    <h2>World-Class Training and Studio Incubators</h2>
+                    <p>Through hands-on apprenticeships, mentorship clinics, and live production code contributions, local graduates transition into industry-ready engineers who compete and collaborate with global development teams every day.</p>
+                `,
+                related: ['remote-work', 'culture-fest', 'jobs-mission']
+            },
+
+            'culture-fest': {
+                id: 'culture-fest',
+                title: 'The Sacred Dham: Centuries of Culinary Rituals and Community Feasts in Himachal',
+                category: 'Culture & Heritage',
+                categoryBadgeColor: '#9333ea',
+                date: 'September 10, 2025',
+                readTime: '5 min read',
+                author: 'Meenakshi Chandel',
+                authorRole: 'Culinary Anthropologist & Food Writer',
+                authorAvatar: 'MC',
+                authorBio: 'Researches sacred food traditions and regional Himalayan fermentation techniques.',
+                image: './images/blog-culture-fest.jpg',
+                takeaways: [
+                    'Prepared strictly without onion or garlic, relying on hing (asafoetida), curd, and whole spices.',
+                    'Cooked in heavy nickel-plated bronze caldrons called Charotis over controlled wood fires.',
+                    'Traditional dining etiquette where guests sit cross-legged on patals (leaf plates) in communal harmony.'
+                ],
+                content: `
+                    <p class="lead text-lg font-medium text-slate-700">In Himachal Pradesh, food is not merely sustenance; it is a sacred community bond. Nowhere is this reverent philosophy more vividly illustrated than in the ancient tradition of the Himachali Dham—a royal satvik banquet prepared to celebrate weddings, festivals, and milestones.</p>
+
+                    <h2>The Sacred Art of the Botis</h2>
+                    <p>A Dham is orchestrated exclusively by traditional master chefs known as 'Botis', hereditary culinary practitioners whose recipes and precise wood-fire temperature rituals have been passed down orally for hundreds of years. Preparation begins before dawn in open-air courtyards over long trench fires called 'Kaur'.</p>
+
+                    <blockquote>"Cooking in bronze caldrons over wood embers imparts a delicate smokiness and warmth to Madra and Mah that modern steel pots can never replicate."</blockquote>
+
+                    <h2>The Sequential Symphony of Flavors</h2>
+                    <p>Unlike buffet meals, a Dham is served in a meticulous therapeutic sequence: beginning with steaming fragrant rice and rich, ghee-infused Chana Madra (chickpeas simmered in spiced yogurt gravy), followed by Sepu Badi (steamed lentil dumplings), sour and tangy Mahni, and concluding with a sweet saffron rice dish known as 'Mittha'.</p>
+
+                    <h2>Preserving Communal Purity</h2>
+                    <p>Served to hundreds of community members sitting side-by-side on floor mats with plates fashioned from dried Sal leaves, the Dham is a living emblem of democratic mountain hospitality where every guest is honored as divinity.</p>
+                `,
+                related: ['handicrafts', 'ecotourism', 'remote-work']
+            }
+        };
+
+        // Get Article ID from URL query parameters
+        function getArticleId() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            return (id && blogsData[id]) ? id : 'remote-work';
+        }
+
+        // Render Article Details
+        function loadArticle() {
+            const articleId = getArticleId();
+            const article = blogsData[articleId];
+
+            // Update Page Title
+            document.title = `${article.title} - Himalaya Digital Marketplace`;
+
+            // Update Content Elements
+            document.getElementById('breadcrumbCategory').textContent = article.category;
+            document.getElementById('postBadge').textContent = article.category;
+            document.getElementById('postBadge').style.backgroundColor = article.categoryBadgeColor || '#154a78';
+            document.getElementById('postDate').textContent = article.date;
+            document.getElementById('postReadTime').textContent = article.readTime;
+            document.getElementById('postTitle').textContent = article.title;
+            
+            document.getElementById('postAuthorName').textContent = article.author;
+            document.getElementById('postAuthorNameBottom').textContent = article.author;
+            document.getElementById('postAuthorRole').textContent = article.authorRole;
+            document.getElementById('postAuthorAvatar').textContent = article.authorAvatar;
+            document.getElementById('postAuthorAvatarBottom').textContent = article.authorAvatar;
+            document.getElementById('postAuthorBio').textContent = article.authorBio;
+
+            document.getElementById('postImage').src = article.image;
+            document.getElementById('postImage').alt = article.title;
+
+            // Render Key Takeaways
+            const list = document.getElementById('takeawaysList');
+            list.innerHTML = '';
+            if (article.takeaways && article.takeaways.length > 0) {
+                article.takeaways.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-start gap-2';
+                    li.innerHTML = `
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-[#154a78] shrink-0 mt-0.5"></i>
+                        <span>${item}</span>
+                    `;
+                    list.appendChild(li);
+                });
+            } else {
+                document.getElementById('takeawaysBox').style.display = 'none';
+            }
+
+            // Render Body Content
+            document.getElementById('postContent').innerHTML = article.content;
+
+            // Render Related Articles
+            renderRelated(articleId, article.related);
+
+            // Reinitialize Lucide Icons
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        // Render Related Articles
+        function renderRelated(currentId, relatedIds) {
+            const container = document.getElementById('relatedArticlesGrid');
+            container.innerHTML = '';
+
+            let list = (relatedIds || []).filter(id => id !== currentId && blogsData[id]);
+            // If less than 3, grab other keys
+            if (list.length < 3) {
+                Object.keys(blogsData).forEach(k => {
+                    if (k !== currentId && !list.includes(k) && list.length < 3) {
+                        list.push(k);
+                    }
+                });
+            }
+
+            list.slice(0, 3).forEach(id => {
+                const item = blogsData[id];
+                const card = document.createElement('article');
+                card.className = 'blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col';
+                card.innerHTML = `
+                    <div class="relative card-image-wrap h-44 overflow-hidden">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                        <span class="absolute top-2.5 left-2.5 text-white font-medium text-[10px] px-2.5 py-0.5 rounded-md shadow-xs" style="background-color: ${item.categoryBadgeColor || '#154a78'};">
+                            ${item.category}
+                        </span>
+                    </div>
+                    <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-[11px] text-slate-400 font-medium mb-1.5">
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="clock" class="w-3 h-3"></i> ${item.readTime}
+                                </span>
+                                <span>&bull;</span>
+                                <span>${item.date}</span>
+                            </div>
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 font-heading leading-snug hover:text-[#154a78] transition-colors line-clamp-2 mb-2">
+                                <a href="blog-detail.html?id=${item.id}">${item.title}</a>
+                            </h3>
+                        </div>
+                        <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 mt-2">
+                            <span class="text-xs text-slate-500 font-medium">By ${item.author}</span>
+                            <a href="blog-detail.html?id=${item.id}"
+                                class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                <span>Read</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Social Share Functions
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=450');
+        }
+
+        function shareTwitter() {
+            const text = encodeURIComponent(document.title);
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'width=600,height=400');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadArticle);
+    </script>
+</body>
+
+</html>

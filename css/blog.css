@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Himalaya Digital Marketplace - Blog Styles (blog.css)
+   Clean, modern card transitions, tab buttons, responsive typography
+   ========================================================================== */
+
+/* Blog Card Transitions */
+.blog-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s ease;
+    will-change: transform, box-shadow;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    border-color: #9fe8ff;
+    box-shadow: 0 14px 28px -6px rgba(21, 74, 120, 0.12), 0 8px 12px -4px rgba(21, 74, 120, 0.06);
+}
+
+/* Image Zoom on Card Hover */
+.blog-card .card-image-wrap img,
+.featured-blog-card .card-image-wrap img {
+    transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.blog-card:hover .card-image-wrap img,
+.featured-blog-card:hover .card-image-wrap img {
+    transform: scale(1.05);
+}
+
+/* Featured Blog Card Transition */
+.featured-blog-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+}
+
+.featured-blog-card:hover {
+    transform: translateY(-3px);
+    border-color: #9fe8ff;
+    box-shadow: 0 16px 32px -8px rgba(21, 74, 120, 0.15);
+}
+
+/* Category Filter Tabs */
+.blog-tab {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    color: #475569;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.blog-tab:hover {
+    color: #154a78 !important;
+    background-color: #f0f8fd !important;
+}
+
+.blog-tab.active {
+    background-color: #154a78 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(21, 74, 120, 0.25) !important;
+}
+
+.blog-tab.active:hover {
+    background-color: #1e5f96 !important;
+    color: #ffffff !important;
+}
+
+/* Scrollbar Hiding for Responsive 320px Category Slider */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Prose Typography Customization for Article Reading */
+.blog-prose p {
+    margin-bottom: 1.35rem;
+    line-height: 1.8;
+    color: #334155;
+    font-size: 1.05rem;
+}
+
+.blog-prose h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 2.25rem;
+    margin-bottom: 0.85rem;
+    line-height: 1.3;
+}
+
+.blog-prose h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-top: 1.75rem;
+    margin-bottom: 0.65rem;
+}
+
+.blog-prose ul {
+    list-style-type: disc;
+    padding-left: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #334155;
+}
+
+.blog-prose ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.blog-prose blockquote {
+    border-left: 4px solid #154a78;
+    padding: 1rem 1.25rem;
+    margin: 1.75rem 0;
+    background-color: #f8fafc;
+    border-radius: 0 0.75rem 0.75rem 0;
+    font-style: italic;
+    color: #1e293b;
+}
