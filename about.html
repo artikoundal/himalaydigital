@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Himalaya Digital Marketplace</title>
+    <meta name="description" content="Learn about Himalaya Digital - Himachal Pradesh's premier marketplace empowering life, living, livelihood, and lifestyle across the Himalayan region.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skyBrand: '#9fe8ff',
+                        btnNavy: '#154a78',
+                        btnNavyHover: '#0f385c',
+                        footerPurple: '#200063',
+                        footerDark: '#150043',
+                        footerText: '#e6e2ed',
+                        poweredBlue: '#2986bb',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Outfit', 'sans-serif'],
+                        heading: ['Outfit', 'Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/footer.css">
+</head>
+
+<body class="bg-[#f0f8fd] text-slate-800 antialiased selection:bg-[#9fe8ff] selection:text-[#200063]">
+
+    <main>
+        <!-- =====================================================================
+             2. HERO BANNER ("ABOUT US")
+             ===================================================================== -->
+        <section class="relative w-full h-[200px] sm:h-[260px] md:h-[320px] flex items-center justify-center overflow-hidden">
+            <!-- Mountain Panorama Background Image -->
+            <img 
+                src="./images/about-banner.webp" 
+                alt="Himalayan Mountain Panorama - Himalaya Digital About Us" 
+                class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            >
+            
+            <!-- Subtle Atmospheric Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-sky-900/30 via-transparent to-sky-900/40"></div>
+
+            <!-- Banner Title -->
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white tracking-[0.08em] uppercase font-heading drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                    ABOUT US
+                </h1>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. OVERVIEW SECTION ("Himalayas Digital" Card)
+             ===================================================================== -->
+        <section class="py-10 sm:py-14 lg:py-16 bg-[#f0f8fd]">
+            <div class="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-12">
+                <!-- White Overview Card with Mountain Split Background -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row items-stretch overflow-hidden">
+                    
+                    <!-- Left Panel: Large circular diagram (No separate bg image, edge-to-edge) -->
+                    <div class="relative w-full md:w-5/12 min-h-[340px] sm:min-h-[420px] flex items-center justify-center p-0 overflow-hidden bg-white">
+                        <!-- Circular Infographic Diagram (Edge-to-edge, enlarged, no side spacing) -->
+                        <img 
+                            src="./images/himalayas-digital-about-img.webp" 
+                            alt="Himalayas Digital Community Ecosystem Diagram" 
+                            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+
+                    <!-- Right Panel: Story & Mission Content -->
+                    <div class="w-full md:w-7/12 p-6 sm:p-10 lg:p-14 flex flex-col justify-center bg-white">
+                        <h2 class="text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#143657] font-heading mb-4 tracking-tight">
+                            Himalayas Digital
+                        </h2>
+                        
+                        <p class="text-slate-600 text-sm sm:text-[14.5px] leading-relaxed mb-4 text-justify sm:text-left">
+                            Himalayas Digital is a classified ads listing, content, conversation, community building and commerce platform.<br>
+                            Himalayas Digital platform's goal is to empower life, living, livelihood, and lifestyle of people living in the Himalayas region by bringing access to information via classified ads, events, stories, business listing, TV – all on a single platform with the focus on the Himalayan region.
+                        </p>
+                        
+                        <p class="text-slate-600 text-sm sm:text-[14.5px] leading-relaxed text-justify sm:text-left">
+                            Himalayas Digital platform has been created to bring together providers and seekers. Providers and seekers of ideas, inspiration, products, services, solutions, jobs, careers and mentorship. Himalayas Digital platform's goal is to serve as a classified ads platform that is available for free for all it's users. In the future, providers may promote their ads for a fees.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             4. "OUR GOALS" SECTION WITH MULTI-COLORED HOVER CARDS
+             ===================================================================== -->
+        <section id="goals" class="py-12 sm:py-16 lg:py-20 bg-[#f0f8fd]">
+            <div class="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-12">
+                
+                <!-- 3-Column Responsive Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+
+                    <!-- ==========================================
+                         COLUMN 1 (Left)
+                         ========================================== -->
+                    <div class="flex flex-col gap-6">
+                        <!-- Intro Block: Heading, Description & Submit Ad Button -->
+                        <div class="pt-1">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 font-heading mb-2 tracking-tight">
+                                Our Goals
+                            </h2>
+                            <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-4">
+                                Be the go to platform for classifieds, listing, content, conversation, commerce, ideas, stories, jobs, startups, inspiration, art, culture, heritage, handicrafts in the Himalayan region
+                            </p>
+                            <a href="#submit-ad" class="inline-flex items-center gap-2 bg-[#154a78] hover:bg-[#0f385c] text-white text-[12px] font-semibold px-4 py-2 rounded-md shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+                                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <circle cx="12" cy="12" r="8"/>
+                                    <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+                                </svg>
+                                Submit Ad
+                            </a>
+                        </div>
+
+                        <!-- Card 1: Create 5000 Jobs By 31.December.2025 (Cyan Theme) -->
+                        <div class="goal-card goal-card-cyan group rounded-2xl border-2 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                            <div class="goal-card-content p-5 sm:p-6 pb-2 mb-2">
+                                <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-white transition-colors duration-300 mb-2 font-heading leading-snug">
+                                    Create 5000 Jobs By 31.December.2025
+                                </h3>
+                                <p class="text-[12px] sm:text-[12.5px] text-slate-600 group-hover:text-white leading-relaxed transition-colors duration-300">
+                                    Create 5000 jobs by 31.December.2025 in the areas of Technology, Deep Tech, AI, Product Engineering, Digital, Software Development, Creative Production starting from Dharamshala, Himachal Pradesh spreading across the Himalayan Region.
+                                </p>
+                            </div>
+
+                            <!-- Illustration Area: Cyan Circle, Mountain, Character with Spyglass on Peak -->
+                            <div class="goal-card-illustration relative w-full h-[225px] sm:h-[235px] flex items-end justify-center overflow-hidden mt-auto">
+                                <!-- True Circle Backdrop -->
+                                <div class="goal-card-circle"></div>
+                                
+                                <!-- Mountain Peak Image (Full-width edge-to-edge) -->
+                                <img src="./images/our-goals.webp" alt="Mountain Peak" class="relative z-10 w-full h-auto object-cover pointer-events-none">
+                                
+                                <!-- Character with Spyglass on Peak -->
+                                <img src="./images/goals1.webp" alt="Person looking through spyglass" class="goal-card-character absolute bottom-[100px] sm:bottom-[108px] z-20 h-[105px] sm:h-[112px] w-auto object-contain pointer-events-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         COLUMN 2 (Middle)
+                         ========================================== -->
+                    <div class="flex flex-col gap-6">
+                        <!-- Card 2: Be The No.1 Himalayan Platform (Purple Theme) -->
+                        <div class="goal-card goal-card-purple group rounded-2xl border-2 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                            <div class="goal-card-content p-5 sm:p-6 pb-2 mb-2">
+                                <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-white transition-colors duration-300 mb-2 font-heading leading-snug">
+                                    Be The No.1 Himalayan Platform
+                                </h3>
+                                <p class="text-[12px] sm:text-[12.5px] text-slate-600 group-hover:text-white leading-relaxed transition-colors duration-300">
+                                    Be the go to platform for classifieds, listing, content, conversation, commerce, ideas, stories, jobs, startups, inspiration, art, culture, heritage, handicrafts in the Himalayan region
+                                </p>
+                            </div>
+
+                            <!-- Illustration Area: Purple Circle, Mountain, Suit Man with Cane on Peak -->
+                            <div class="goal-card-illustration relative w-full h-[225px] sm:h-[235px] flex items-end justify-center overflow-hidden mt-auto">
+                                <!-- True Circle Backdrop -->
+                                <div class="goal-card-circle"></div>
+                                
+                                <!-- Mountain Peak Image (Full-width edge-to-edge) -->
+                                <img src="./images/our-goals.webp" alt="Mountain Peak" class="relative z-10 w-full h-auto object-cover pointer-events-none">
+                                
+                                <!-- Character with Cane on Peak -->
+                                <img src="./images/goals2.webp" alt="Person in suit on mountain" class="goal-card-character absolute bottom-[102px] sm:bottom-[110px] z-20 h-[108px] sm:h-[114px] w-auto object-contain pointer-events-none">
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Build The Ecosystems (Green Theme) -->
+                        <div class="goal-card goal-card-green group rounded-2xl border-2 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                            <div class="goal-card-content p-5 sm:p-6 pb-2 mb-2">
+                                <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-white transition-colors duration-300 mb-2 font-heading leading-snug">
+                                    Build The Ecosystems
+                                </h3>
+                                <p class="text-[12px] sm:text-[12.5px] text-slate-600 group-hover:text-white leading-relaxed transition-colors duration-300">
+                                    Build the Digital, Media, Modern Businesses and Technology ecosystems in, Dharamshala/ Himachal Pradesh and the Himalayan Region.
+                                </p>
+                            </div>
+
+                            <!-- Illustration Area: Green Circle, Mountain, Woman with Arms Raised on Peak -->
+                            <div class="goal-card-illustration relative w-full h-[225px] sm:h-[235px] flex items-end justify-center overflow-hidden mt-auto">
+                                <!-- True Circle Backdrop -->
+                                <div class="goal-card-circle"></div>
+                                
+                                <!-- Mountain Peak Image (Full-width edge-to-edge) -->
+                                <img src="./images/our-goals.webp" alt="Mountain Peak" class="relative z-10 w-full h-auto object-cover pointer-events-none">
+                                
+                                <!-- Character with Arms Raised on Peak -->
+                                <img src="./images/goals3.webp" alt="Woman celebrating on mountain" class="goal-card-character absolute bottom-[104px] sm:bottom-[112px] z-20 h-[110px] sm:h-[116px] w-auto object-contain pointer-events-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         COLUMN 3 (Right)
+                         ========================================== -->
+                    <div class="flex flex-col gap-6">
+                        <!-- Card 4: Net Positive Economic Impact (Yellow Theme) -->
+                        <div class="goal-card goal-card-yellow group rounded-2xl border-2 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                            <div class="goal-card-content p-5 sm:p-6 pb-2 mb-2">
+                                <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-white transition-colors duration-300 mb-2 font-heading leading-snug">
+                                    Net Positive Economic Impact
+                                </h3>
+                                <p class="text-[12px] sm:text-[12.5px] text-slate-600 group-hover:text-white leading-relaxed transition-colors duration-300">
+                                    Create a net positive economic impact and live sustainably immersed and with Mother Nature.
+                                </p>
+                            </div>
+
+                            <!-- Illustration Area: Yellow Circle, Mountain, Man with Globe on Peak -->
+                            <div class="goal-card-illustration relative w-full h-[225px] sm:h-[235px] flex items-end justify-center overflow-hidden mt-auto">
+                                <!-- True Circle Backdrop -->
+                                <div class="goal-card-circle"></div>
+                                
+                                <!-- Mountain Peak Image (Full-width edge-to-edge) -->
+                                <img src="./images/our-goals.webp" alt="Mountain Peak" class="relative z-10 w-full h-auto object-cover pointer-events-none">
+                                
+                                <!-- Character with Globe on Peak -->
+                                <img src="./images/goals4.webp" alt="Man holding globe on mountain" class="goal-card-character absolute bottom-[102px] sm:bottom-[110px] z-20 h-[108px] sm:h-[114px] w-auto object-contain pointer-events-none">
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Prevent Youth Migration (Orange Theme) -->
+                        <div class="goal-card goal-card-orange group rounded-2xl border-2 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                            <div class="goal-card-content p-5 sm:p-6 pb-2 mb-2">
+                                <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-white transition-colors duration-300 mb-2 font-heading leading-snug">
+                                    Prevent Youth Migration
+                                </h3>
+                                <p class="text-[12px] sm:text-[12.5px] text-slate-600 group-hover:text-white leading-relaxed transition-colors duration-300">
+                                    Prevent youth migration to the crowded metros and provide global projects, skills, programs, trainings, career opportunities, wealth creation opportunities in the Himalayan Region.
+                                </p>
+                            </div>
+
+                            <!-- Illustration Area: Orange Circle, Mountain, Man with Briefcase on Peak -->
+                            <div class="goal-card-illustration relative w-full h-[225px] sm:h-[235px] flex items-end justify-center overflow-hidden mt-auto">
+                                <!-- True Circle Backdrop -->
+                                <div class="goal-card-circle"></div>
+                                
+                                <!-- Mountain Peak Image (Full-width edge-to-edge) -->
+                                <img src="./images/our-goals.webp" alt="Mountain Peak" class="relative z-10 w-full h-auto object-cover pointer-events-none">
+                                
+                                <!-- Character with Briefcase on Peak -->
+                                <img src="./images/goals5.webp" alt="Man with briefcase on mountain" class="goal-card-character absolute bottom-[104px] sm:bottom-[112px] z-20 h-[110px] sm:h-[116px] w-auto object-contain pointer-events-none">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             5. LAUNCH VIDEO SECTION
+             ===================================================================== -->
+        <section id="video" class="py-12 sm:py-16 lg:py-20 bg-[#EDF3F6]">
+            <div class="max-w-[960px] mx-auto px-6 sm:px-10 lg:px-12 text-center">
+                
+                <!-- Heading with video-arrow.svg -->
+                <div class="flex flex-col items-center mb-6">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading mb-1.5 tracking-tight">
+                        Launch Video
+                    </h2>
+                    <!-- SVG arrow from images/video-arrow.svg pointing to video frame -->
+                    <img src="./images/video-arrow.svg" alt="Arrow pointing to launch video" class="w-12 sm:w-14 h-auto my-1.5 pointer-events-none">
+                </div>
+
+                <!-- Video Card / Thumbnail with interactive play button -->
+                <a href="https://www.youtube.com/watch?v=lxMgzLWJ19Q" target="_blank" rel="noopener noreferrer" class="block relative rounded-2xl overflow-hidden shadow-2xl border-4 border-[#200063]/25 group cursor-pointer max-w-[820px] mx-auto bg-black" onclick="handleVideoClick(event)" aria-label="Play Himalayas Digital Launch Video">
+                    <img 
+                        src="./images/launch-video.webp" 
+                        alt="Himalayas Digital Marketplace Launch Video Interview" 
+                        class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                    >
+                    
+                    <!-- Dark Gradient Overlay on Hover -->
+                    <div class="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors duration-300"></div>
+
+                    <!-- Pulsing Play Button -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/95 group-hover:bg-white text-[#154a78] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300 pl-1 play-btn-glow">
+                            <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[#154a78]" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         6. VIDEO POPUP MODAL
+         ===================================================================== -->
+    <div id="videoModal" class="fixed inset-0 z-50 bg-black/80 video-modal-backdrop hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col">
+            <!-- Close Button -->
+            <button onclick="closeVideoModal()" aria-label="Close video" class="absolute top-3 right-3 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <!-- Notice Banner (Only shown if opened directly via file://) -->
+            <div id="fileNoticeBanner" class="hidden px-4 py-2.5 bg-amber-500/20 border-b border-amber-500/30 text-amber-200 text-xs sm:text-sm flex flex-wrap items-center justify-between gap-2 pr-14">
+                <span>⚠️ <strong>File:// preview:</strong> YouTube embeds require an HTTP server. <a href="http://localhost:8000/about.html#video" target="_blank" class="underline font-bold text-amber-300 hover:text-white">Click here to open via Local Server</a></span>
+                <a href="https://www.youtube.com/watch?v=lxMgzLWJ19Q" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-semibold">Open on YouTube</a>
+            </div>
+            
+            <!-- Video Player Embed Container -->
+            <div class="aspect-video w-full bg-black flex items-center justify-center">
+                <iframe id="videoIframe" class="w-full h-full" src="" title="Himalayas Digital Launch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Bottom Video Action Bar with Direct YouTube Link -->
+            <div class="px-4 py-3 bg-slate-900/95 flex items-center justify-between text-xs sm:text-sm text-slate-300 border-t border-white/10">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    <span class="font-medium text-white">Himalayas Digital Launch Video</span>
+                </div>
+                <a href="https://www.youtube.com/watch?v=lxMgzLWJ19Q" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-all shadow-md hover:scale-105">
+                    <span>Watch on YouTube</span>
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         7. SITE FOOTER (100% Exact match to footer.html with responsive geometry)
+         ===================================================================== -->
+    <footer class="w-full relative mt-auto" id="site-footer">
+
+        <!-- 1. TOP NEWSLETTER & INITIATIVE SECTION (SKY BLUE: #9fe8ff) -->
+        <section class="bg-[#9fe8ff] relative z-20 pt-10 sm:pt-12 pb-0">
+            <div class="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 items-stretch">
+
+                    <!-- Left: Newsletter Subscription (Spans columns 1 to 3) -->
+                    <div class="md:col-span-3 pb-8 sm:pb-9">
+                        <h2 class="text-2xl sm:text-[28px] lg:text-[32px] font-bold text-black tracking-tight leading-tight mb-2">
+                            Subscribe To Newsletter
+                        </h2>
+                        <p class="text-black text-sm sm:text-[15px] font-normal mb-5">
+                            and receive new ads in inbox
+                        </p>
+
+                        <form id="newsletterForm" onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 max-w-lg">
+                            <input 
+                                type="email" 
+                                id="newsletterEmail"
+                                required 
+                                placeholder="Your email address" 
+                                aria-label="Your email address"
+                                class="newsletter-input bg-white rounded-md px-4 py-2.5 text-sm sm:text-[15px] text-slate-900 placeholder-slate-400 w-full sm:w-[350px] lg:w-[380px] h-[42px] border-0 shadow-sm transition"
+                            >
+                            <button 
+                                type="submit" 
+                                id="newsletterSubmitBtn"
+                                class="bg-[#154a78] hover:bg-[#0f385c] active:scale-[0.98] text-white px-6 py-2.5 rounded-md font-medium text-sm sm:text-[15px] transition-all duration-200 h-[42px] flex items-center justify-center shadow-sm whitespace-nowrap"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Social Icons & Circular Initiative Badge (In Column 4, aligned above RESOURCES) -->
+                    <div class="md:col-span-1 flex flex-col justify-between items-center relative w-full pb-0">
+
+                        <!-- Social Icons Row (With Dynamic Brand Hover Effects) -->
+                        <div class="flex items-center justify-center gap-2.5" aria-label="Social Media Links">
+                            <!-- Facebook -->
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+                               aria-label="Facebook"
+                               class="w-8 h-8 rounded-full border border-black flex items-center justify-center text-black hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-[#1877f2]/30 active:scale-95 transition-all duration-200 ease-out">
+                                <svg class="w-3.5 h-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+
+                            <!-- X (Twitter) -->
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+                               aria-label="X (Twitter)"
+                               class="w-8 h-8 rounded-full border border-black flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-black/30 active:scale-95 transition-all duration-200 ease-out">
+                                <svg class="w-3 h-3 transition-transform duration-200" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
+                               aria-label="LinkedIn"
+                               class="w-8 h-8 rounded-full border border-black flex items-center justify-center text-black hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-[#0a66c2]/30 active:scale-95 transition-all duration-200 ease-out">
+                                <svg class="w-3 h-3 transition-transform duration-200" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                               aria-label="Instagram"
+                               class="w-8 h-8 rounded-full border border-black flex items-center justify-center text-black hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white hover:border-transparent hover:-translate-y-1 hover:scale-110 hover:shadow-md hover:shadow-pink-500/30 active:scale-95 transition-all duration-200 ease-out">
+                                <svg class="w-3.5 h-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Circular Extension / Initiative Badge -->
+                        <div class="relative w-full flex flex-col items-center justify-center mt-6 md:mt-0">
+                            <!-- Content inside the circular badge -->
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="text-[11.5px] sm:text-[12px] font-semibold text-black tracking-tight mb-0.5 whitespace-nowrap">
+                                    A product & an Initiative by
+                                </span>
+                                <a href="https://pulseplaydigital.com" target="_blank" rel="noopener noreferrer" 
+                                   title="PulsePlay Digital"
+                                   class="block hover:opacity-95 transition-opacity translate-y-[16px]">
+                                    <img src="./images/pulseplay-logo.png" alt="PulsePlay Digital - Your Digital Growth Partner" class="h-[34px] sm:h-[42px] lg:h-[44px] w-auto object-contain">
+                                </a>
+                            </div>
+
+                            <!-- Exact Compact Circular Dome Arc dipping into the purple section below -->
+                            <svg viewBox="0 0 170 50" class="absolute -bottom-[47px] left-1/2 -translate-x-1/2 w-[164px] sm:w-[176px] h-[48px] pointer-events-none z-0" fill="none">
+                                <path d="M 0,0 A 97.5 97.5 0 0,0 170,0 Z" fill="#9fe8ff" />
+                            </svg>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. MAIN DIRECTORY LINKS SECTION (DARK PURPLE: #200063) -->
+        <section class="bg-[#200063] relative z-10 pt-16 sm:pt-[68px] pb-12 sm:pb-14">
+            <div class="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-12">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+
+                    <!-- Column 1: TRENDING EVENTS -->
+                    <div class="flex flex-col">
+                        <h3 class="text-white font-semibold text-[13px] tracking-wider uppercase mb-5">
+                            TRENDING EVENTS
+                        </h3>
+                        <ul class="space-y-2.5">
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Home</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">About</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Events</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Blog</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Videos</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Contact</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Privacy Policy</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Terms Of Use</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: TRENDING LOCATIONS -->
+                    <div class="flex flex-col">
+                        <h3 class="text-white font-semibold text-[13px] tracking-wider uppercase mb-5">
+                            TRENDING LOCATIONS
+                        </h3>
+                        <ul class="space-y-2.5">
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Dharamshala</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Kangra</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Palampur</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Manali</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Shilma</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Mandi</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Baijnath</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Sundernagar</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: TRENDING CATEGORIES -->
+                    <div class="flex flex-col">
+                        <h3 class="text-white font-semibold text-[13px] tracking-wider uppercase mb-5">
+                            TRENDING CATEGORIES
+                        </h3>
+                        <ul class="space-y-2.5">
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Jobs</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Rental</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Business</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Education</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Farm Produce</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Furniture</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Real Estate</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Restaurants</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: RESOURCES -->
+                    <div class="flex flex-col">
+                        <h3 class="text-white font-semibold text-[13px] tracking-wider uppercase mb-5">
+                            RESOURCES
+                        </h3>
+                        <ul class="space-y-2.5">
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">About</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Events</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Blog</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Videos</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Contact</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Privacy Policy</a></li>
+                            <li><a href="#" class="text-[#e6e2ed] text-[13.5px] hover:text-[#9fe8ff] transition-colors duration-150">Terms Of Use</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BOTTOM COPYRIGHT & ATTRIBUTION BAR (DARK INDIGO: #150043) -->
+        <section class="bg-[#150043] py-4 sm:py-5 border-t border-white/[0.04]">
+            <div class="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-[13px]">
+                <!-- Copyright -->
+                <p class="text-[#e6e2ed]">
+                    ©2024 PulsePlay Digital Private Limited
+                </p>
+
+                <!-- Powered By Attribution -->
+                <p class="text-[#e6e2ed]">
+                    Powered By 
+                    <a href="https://pulseplaydigital.com" target="_blank" rel="noopener noreferrer" 
+                       class="text-[#2986bb] hover:text-[#9fe8ff] font-medium transition-colors duration-150">
+                        PulsePlay Digital Private Limited
+                    </a>
+                </p>
+            </div>
+        </section>
+
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script src="./js/footer.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Video Modal & Play Controls
+        function handleVideoClick(e) {
+            e.preventDefault();
+            openVideoModal();
+        }
+
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            const fileNotice = document.getElementById('fileNoticeBanner');
+
+            // Detect if running locally from file:// scheme (YouTube Error 153 safeguard)
+            if (window.location.protocol === 'file:') {
+                fileNotice?.classList.remove('hidden');
+            } else {
+                fileNotice?.classList.add('hidden');
+            }
+
+            // Official YouTube Embed: https://www.youtube.com/watch?v=lxMgzLWJ19Q
+            iframe.src = 'https://www.youtube.com/embed/lxMgzLWJ19Q?autoplay=1&rel=0';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            iframe.src = '';
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on ESC key or clicking outside
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideoModal();
+        });
+        document.getElementById('videoModal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'videoModal') closeVideoModal();
+        });
+    </script>
+</body>
+
+</html>

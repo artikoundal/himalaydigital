@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Himalaya Digital Marketplace - About Us Styles (about.css)
+   Interactive cards, goal card hover effects, and video animations
+   ========================================================================== */
+
+/* Goal Card Smooth Transitions & Structure */
+.goal-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+    will-change: transform, box-shadow;
+    z-index: 1;
+}
+
+/* Bottom-to-Top background fill effect on hover */
+.goal-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-hover-bg, #00b4d8);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.goal-card:hover::before,
+.goal-card.is-hovered::before {
+    transform: scaleY(1);
+}
+
+/* Individual card hover colors & borders */
+.goal-card-cyan {
+    border-color: #00b4d8;
+    --card-hover-bg: #00b4d8;
+}
+
+.goal-card-purple {
+    border-color: #8000ff;
+    --card-hover-bg: #8000ff;
+}
+
+.goal-card-green {
+    border-color: #00d084;
+    --card-hover-bg: #00d084;
+}
+
+.goal-card-yellow {
+    border-color: #ffb703;
+    --card-hover-bg: #ffb703;
+}
+
+.goal-card-orange {
+    border-color: #ff6b35;
+    --card-hover-bg: #ff6b35;
+}
+
+/* Goal Card Illustration Circle Backdrop (True Circle Geometry) */
+.goal-card-circle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 95%;
+    max-width: 340px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    transform: translate(-50%, 46%);
+    pointer-events: none;
+    z-index: 0;
+    transition: background-color 0.3s ease;
+}
+
+.goal-card-cyan .goal-card-circle { background-color: #00b4d8; }
+.goal-card-purple .goal-card-circle { background-color: #8000ff; }
+.goal-card-green .goal-card-circle { background-color: #00d084; }
+.goal-card-yellow .goal-card-circle { background-color: #ffb703; }
+.goal-card-orange .goal-card-circle { background-color: #ff6b35; }
+
+/* Ensure contents stay on top of the rising background fill */
+.goal-card-content,
+.goal-card-illustration {
+    position: relative;
+    z-index: 2;
+}
+
+.goal-card-content h3,
+.goal-card-content p {
+    transition: color 0.35s ease;
+}
+
+.goal-card:hover .goal-card-content h3,
+.goal-card:hover .goal-card-content p,
+.goal-card.is-hovered .goal-card-content h3,
+.goal-card.is-hovered .goal-card-content p {
+    color: #ffffff !important;
+}
+
+.goal-card-character {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goal-card:hover .goal-card-character,
+.goal-card.is-hovered .goal-card-character {
+    transform: scale(1.06);
+}
+
+/* Play button pulse animation */
+@keyframes pulsePlayGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(21, 74, 120, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 16px rgba(21, 74, 120, 0);
+    }
+}
+
+.play-btn-glow {
+    animation: pulsePlayGlow 2.5s infinite;
+}
+
+/* Video modal backdrop blur */
+.video-modal-backdrop {
+    backdrop-filter: blur(8px);
+}
