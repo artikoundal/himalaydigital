@@ -78,13 +78,13 @@
         <section class="py-6 sm:py-8 bg-[#f0f8fd]">
             <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12">
 
-                <!-- Clean Tabs: All, Upcoming Events, Past Events & Simple Search -->
+                <!-- Clean Tabs, Date Filter & Simple Search Toolbar -->
                 <div
-                    class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 pb-6 border-b border-slate-200/80">
+                    class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 sm:gap-4 pb-6 border-b border-slate-200/80">
 
                     <!-- Clean Responsive Tab Switcher -->
                     <div
-                        class="flex items-center p-1 sm:p-1.5 bg-white border border-slate-200/90 rounded-2xl shadow-2xs max-w-full overflow-x-auto no-scrollbar gap-1 self-start sm:self-auto">
+                        class="flex items-center p-1 sm:p-1.5 bg-white border border-slate-200/90 rounded-2xl shadow-2xs max-w-full overflow-x-auto no-scrollbar gap-1 self-start sm:self-auto shrink-0">
                         <button onclick="switchEventTab('all', this)"
                             class="event-tab active px-3.5 min-[360px]:px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0">
                             All
@@ -99,8 +99,113 @@
                         </button>
                     </div>
 
+                    <!-- Unified Date Filter Popover in the middle -->
+                    <div class="relative shrink-0" id="dateFilterWrapper">
+                        <!-- Date Trigger Button -->
+                        <button id="dateFilterBtn" onclick="toggleDatePopover(event)" type="button"
+                            class="inline-flex items-center gap-2 bg-white border border-slate-200/90 hover:border-[#154a78]/50 rounded-xl px-3.5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-slate-700 shadow-2xs hover:shadow-xs transition cursor-pointer select-none">
+                            <i data-lucide="calendar" class="w-4 h-4 text-[#154a78] shrink-0"></i>
+                            <span class="text-slate-400 font-medium hidden min-[480px]:inline text-xs">Date:</span>
+                            <span id="dateFilterLabel" class="font-bold text-slate-800">All Dates</span>
+                            <i data-lucide="chevron-down" id="dateFilterChevron"
+                                class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                            <span id="dateClearBtn" onclick="clearDateFilter(event)" title="Clear date filter"
+                                class="hidden ml-1 p-0.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-rose-500 transition">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </button>
+
+                        <!-- Floating Popover Card -->
+                        <div id="dateFilterPopover"
+                            class="hidden absolute top-full mt-2.5 left-0 sm:left-1/2 sm:-translate-x-1/2 w-[310px] sm:w-[340px] bg-white rounded-2xl shadow-xl border border-slate-200/90 p-4 z-50 transition-all duration-200">
+
+                            <!-- Header -->
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                                    <i data-lucide="calendar-range" class="w-4 h-4 text-[#154a78]"></i>
+                                    <span>Filter by Date</span>
+                                </div>
+                                <button onclick="closeDatePopover()" type="button"
+                                    class="text-slate-400 hover:text-slate-600 p-1 rounded-md hover:bg-slate-100 transition cursor-pointer">
+                                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+
+                            <!-- Quick Presets -->
+                            <div class="mb-3.5">
+                                <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                                    Quick Select
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5" id="datePresetsContainer">
+                                    <button type="button" onclick="selectDatePreset('all', 'All Dates')"
+                                        class="date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[#154a78] bg-[#154a78]/10 border border-[#154a78]/30 transition cursor-pointer"
+                                        data-preset="all">
+                                        All Dates
+                                    </button>
+                                    <button type="button" onclick="selectDatePreset('2026-01', 'January 2026')"
+                                        class="date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer"
+                                        data-preset="2026-01">
+                                        Jan 2026
+                                    </button>
+                                    <button type="button" onclick="selectDatePreset('2025-12', 'December 2025')"
+                                        class="date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer"
+                                        data-preset="2025-12">
+                                        Dec 2025
+                                    </button>
+                                    <button type="button" onclick="selectDatePreset('2025-11', 'November 2025')"
+                                        class="date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer"
+                                        data-preset="2025-11">
+                                        Nov 2025
+                                    </button>
+                                    <button type="button" onclick="selectDatePreset('2025-10', 'October 2025')"
+                                        class="date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer"
+                                        data-preset="2025-10">
+                                        Oct 2025
+                                    </button>
+                                    <button type="button" onclick="selectDatePreset('2024', 'Past 2024')"
+                                        class="date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer"
+                                        data-preset="2024">
+                                        Past 2024
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Custom Date Range Section -->
+                            <div class="pt-3 border-t border-slate-100">
+                                <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                                    Custom Range
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs font-semibold text-slate-500 w-10 shrink-0">From</span>
+                                        <input type="date" id="popoverDateFrom"
+                                            class="w-full text-xs font-medium text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-[#154a78] focus:bg-white transition cursor-pointer">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs font-semibold text-slate-500 w-10 shrink-0">To</span>
+                                        <input type="date" id="popoverDateTo"
+                                            class="w-full text-xs font-medium text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-[#154a78] focus:bg-white transition cursor-pointer">
+                                    </div>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="flex items-center justify-between gap-2 mt-3.5 pt-2">
+                                    <button type="button" onclick="clearDateFilter(event)"
+                                        class="text-xs font-semibold text-slate-500 hover:text-slate-800 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition cursor-pointer">
+                                        Clear
+                                    </button>
+                                    <button type="button" onclick="applyCustomDateRange()"
+                                        class="text-xs font-bold bg-[#154a78] text-white px-4 py-1.5 rounded-xl hover:bg-[#0f385c] shadow-2xs transition cursor-pointer">
+                                        Apply Range
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <!-- Clean Responsive Search Box -->
-                    <div class="relative w-full lg:w-72 shrink-0">
+                    <div class="relative w-full lg:w-64 xl:w-72 shrink-0">
                         <input type="text" id="searchEventsInput" oninput="filterSearch(this.value)"
                             placeholder="Search events by title or city..."
                             class="w-full bg-white border border-slate-300/80 rounded-xl pl-9 pr-4 py-2 sm:py-2.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition shadow-2xs">
@@ -131,7 +236,7 @@
                          EVENT 1: TECH & AI SUMMIT (UPCOMING)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="upcoming" data-title="Himalayan Tech & AI Summit 2025" data-city="Dharamshala">
+                        data-type="upcoming" data-date="2025-11-14" data-title="Himalayan Tech & AI Summit 2025" data-city="Dharamshala">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
                                 <img src="./images/event-tech-summit.jpg" alt="Himalayan Tech & AI Summit"
@@ -192,7 +297,7 @@
                          EVENT 2: HIMACHAL CULTURAL UTSAV (UPCOMING)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="upcoming" data-title="Himachal Cultural Heritage & Folk Music Utsav"
+                        data-type="upcoming" data-date="2025-12-05" data-title="Himachal Cultural Heritage & Folk Music Utsav"
                         data-city="Shimla">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -254,7 +359,7 @@
                          EVENT 3: BIR BILLING ADVENTURE EXPO (UPCOMING)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="upcoming" data-title="Bir Billing Himalayan Adventure & Eco-Trekking Expo"
+                        data-type="upcoming" data-date="2025-12-18" data-title="Bir Billing Himalayan Adventure & Eco-Trekking Expo"
                         data-city="Bir Billing">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -316,7 +421,7 @@
                          EVENT 4: STARTUP CONCLAVE (UPCOMING)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="upcoming" data-title="Himalayan Angel Investors & Startup Conclave"
+                        data-type="upcoming" data-date="2026-01-10" data-title="Himalayan Angel Investors & Startup Conclave"
                         data-city="Shimla">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -378,7 +483,7 @@
                          EVENT 5: MCLEOD GANJ YOGA RETREAT (PAST EVENT)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="past" data-title="McLeod Ganj Mindfulness, Yoga & Sound Retreat"
+                        data-type="past" data-date="2024-09-15" data-title="McLeod Ganj Mindfulness, Yoga & Sound Retreat"
                         data-city="Dharamshala">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -439,7 +544,7 @@
                          EVENT 6: KULLU & KANGRA HANDICRAFTS FAIR (PAST EVENT)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="past" data-title="Kullu Shawl, Kangra Art & Handicrafts Fair" data-city="Manali">
+                        data-type="past" data-date="2024-08-02" data-title="Kullu Shawl, Kangra Art & Handicrafts Fair" data-city="Manali">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
                                 <img src="./images/event-handicraft-expo.jpg" alt="Himachal Handicrafts Fair Manali"
@@ -499,7 +604,7 @@
                          EVENT 7: APPLE HARVEST & AGRO-EXPO (UPCOMING)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="upcoming" data-title="Himachal Apple Harvest & Agro-Innovation Expo"
+                        data-type="upcoming" data-date="2025-10-24" data-title="Himachal Apple Harvest & Agro-Innovation Expo"
                         data-city="Kotgarh">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -561,7 +666,7 @@
                          EVENT 8: MOUNTAIN MUSIC GATHERING (UPCOMING)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="upcoming" data-title="Dhauladhar Mountain Folk & Acoustic Music Gathering"
+                        data-type="upcoming" data-date="2025-11-28" data-title="Dhauladhar Mountain Folk & Acoustic Music Gathering"
                         data-city="Palampur">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -623,7 +728,7 @@
                          EVENT 9: CLIMATE & GLACIER FORUM (COMPLETED)
                          ========================================== -->
                     <div class="simple-event-card bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-                        data-type="past" data-title="Western Himalayas Climate & Glacier Conservation Forum"
+                        data-type="past" data-date="2024-06-12" data-title="Western Himalayas Climate & Glacier Conservation Forum"
                         data-city="Spiti">
                         <div>
                             <div class="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-slate-100">
@@ -684,8 +789,18 @@
 
                 <!-- No Results Notice (hidden by default) -->
                 <div id="noResults"
-                    class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
-                    <p class="text-slate-500 text-sm">No events found matching your search.</p>
+                    class="hidden text-center py-14 px-4 bg-white rounded-2xl border border-slate-200/80 shadow-xs max-w-xl mx-auto">
+                    <div
+                        class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                        <i data-lucide="calendar-x" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-800 mb-1">No events found</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto mb-4">No events match your selected date, tab, or search criteria. Try selecting another date or clearing your filters.</p>
+                    <button onclick="resetAllFilters()" type="button"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#154a78] text-white text-xs font-semibold hover:bg-[#0f385c] transition shadow-2xs cursor-pointer">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                        <span>Reset Filters</span>
+                    </button>
                 </div>
 
                 <!-- Dynamic Pagination Container -->
@@ -738,6 +853,9 @@
     <script>
         let currentTab = 'all';
         let searchQuery = '';
+        let datePreset = 'all';
+        let dateFrom = '';
+        let dateTo = '';
         let currentPage = 1;
         let itemsPerPage = 6;
 
@@ -755,6 +873,168 @@
             searchQuery = val.toLowerCase().trim();
             currentPage = 1;
             renderEvents();
+        }
+
+        // Date Popover Toggle & Close
+        function toggleDatePopover(e) {
+            if (e && e.stopPropagation) e.stopPropagation();
+            const popover = document.getElementById('dateFilterPopover');
+            const chevron = document.getElementById('dateFilterChevron');
+            if (!popover) return;
+
+            const isHidden = popover.classList.contains('hidden');
+            if (isHidden) {
+                popover.classList.remove('hidden');
+                if (chevron) chevron.classList.add('rotate-180');
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    window.lucide.createIcons();
+                }
+            } else {
+                closeDatePopover();
+            }
+        }
+
+        function closeDatePopover() {
+            const popover = document.getElementById('dateFilterPopover');
+            const chevron = document.getElementById('dateFilterChevron');
+            if (popover) popover.classList.add('hidden');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+
+        // Close popover when clicking outside
+        document.addEventListener('click', function(e) {
+            const wrapper = document.getElementById('dateFilterWrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                closeDatePopover();
+            }
+        });
+
+        // Quick Preset Selection
+        function selectDatePreset(val, label) {
+            datePreset = val;
+            dateFrom = '';
+            dateTo = '';
+
+            const fromInput = document.getElementById('popoverDateFrom');
+            const toInput = document.getElementById('popoverDateTo');
+            if (fromInput) fromInput.value = '';
+            if (toInput) toInput.value = '';
+
+            const labelEl = document.getElementById('dateFilterLabel');
+            if (labelEl) labelEl.textContent = label;
+
+            const clearBtn = document.getElementById('dateClearBtn');
+            const filterBtn = document.getElementById('dateFilterBtn');
+
+            if (val === 'all') {
+                if (clearBtn) clearBtn.classList.add('hidden');
+                if (filterBtn) {
+                    filterBtn.classList.remove('border-[#154a78]', 'bg-[#154a78]/5', 'text-[#154a78]');
+                    filterBtn.classList.add('border-slate-200/90', 'bg-white', 'text-slate-700');
+                }
+            } else {
+                if (clearBtn) clearBtn.classList.remove('hidden');
+                if (filterBtn) {
+                    filterBtn.classList.remove('border-slate-200/90', 'bg-white', 'text-slate-700');
+                    filterBtn.classList.add('border-[#154a78]', 'bg-[#154a78]/5', 'text-[#154a78]');
+                }
+            }
+
+            // Highlight active preset button
+            document.querySelectorAll('.date-preset-btn').forEach(btn => {
+                if (btn.getAttribute('data-preset') === val) {
+                    btn.className = 'date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[#154a78] bg-[#154a78]/10 border border-[#154a78]/30 transition cursor-pointer';
+                } else {
+                    btn.className = 'date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer';
+                }
+            });
+
+            closeDatePopover();
+            currentPage = 1;
+            renderEvents();
+        }
+
+        // Apply Custom Date Range
+        function applyCustomDateRange() {
+            const fromInput = document.getElementById('popoverDateFrom');
+            const toInput = document.getElementById('popoverDateTo');
+            const from = fromInput ? fromInput.value : '';
+            const to = toInput ? toInput.value : '';
+
+            if (!from && !to) {
+                clearDateFilter();
+                return;
+            }
+
+            datePreset = 'custom';
+            dateFrom = from;
+            dateTo = to;
+
+            let displayLabel = 'Custom Range';
+            if (from && to) {
+                displayLabel = `${formatShortDate(from)} – ${formatShortDate(to)}`;
+            } else if (from) {
+                displayLabel = `From ${formatShortDate(from)}`;
+            } else if (to) {
+                displayLabel = `Until ${formatShortDate(to)}`;
+            }
+
+            const labelEl = document.getElementById('dateFilterLabel');
+            if (labelEl) labelEl.textContent = displayLabel;
+
+            const clearBtn = document.getElementById('dateClearBtn');
+            if (clearBtn) clearBtn.classList.remove('hidden');
+
+            const filterBtn = document.getElementById('dateFilterBtn');
+            if (filterBtn) {
+                filterBtn.classList.remove('border-slate-200/90', 'bg-white', 'text-slate-700');
+                filterBtn.classList.add('border-[#154a78]', 'bg-[#154a78]/5', 'text-[#154a78]');
+            }
+
+            // Remove active style from presets
+            document.querySelectorAll('.date-preset-btn').forEach(btn => {
+                btn.className = 'date-preset-btn text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-transparent transition cursor-pointer';
+            });
+
+            closeDatePopover();
+            currentPage = 1;
+            renderEvents();
+        }
+
+        // Clear Date Filter
+        function clearDateFilter(e) {
+            if (e && e.stopPropagation) e.stopPropagation();
+            selectDatePreset('all', 'All Dates');
+        }
+
+        // Helper to format YYYY-MM-DD to "14 Nov"
+        function formatShortDate(dateStr) {
+            if (!dateStr) return '';
+            try {
+                const parts = dateStr.split('-');
+                if (parts.length === 3) {
+                    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    const day = parseInt(parts[2], 10);
+                    const month = months[parseInt(parts[1], 10) - 1];
+                    return `${day} ${month}`;
+                }
+            } catch (e) {}
+            return dateStr;
+        }
+
+        // Reset All Filters
+        function resetAllFilters() {
+            currentTab = 'all';
+            document.querySelectorAll('.event-tab').forEach(t => {
+                if (t.textContent.trim().startsWith('All')) t.classList.add('active');
+                else t.classList.remove('active');
+            });
+
+            const searchInput = document.getElementById('searchEventsInput');
+            if (searchInput) searchInput.value = '';
+            searchQuery = '';
+
+            clearDateFilter();
         }
 
         function changeItemsPerPage(val) {
@@ -779,16 +1059,25 @@
         function renderEvents() {
             const allCards = Array.from(document.querySelectorAll('.simple-event-card'));
 
-            // 1. Filter matching cards based on active tab and search query
+            // 1. Filter matching cards based on active tab, search query, and date
             const filteredCards = allCards.filter(card => {
                 const type = card.getAttribute('data-type');
                 const title = (card.getAttribute('data-title') || '').toLowerCase();
                 const city = (card.getAttribute('data-city') || '').toLowerCase();
+                const cardDate = card.getAttribute('data-date') || '';
 
                 const matchesTab = (currentTab === 'all' || type === currentTab);
                 const matchesSearch = !searchQuery || title.includes(searchQuery) || city.includes(searchQuery);
 
-                return matchesTab && matchesSearch;
+                let matchesDate = true;
+                if (datePreset !== 'all' && datePreset !== 'custom') {
+                    matchesDate = cardDate.startsWith(datePreset);
+                } else if (datePreset === 'custom') {
+                    if (dateFrom && cardDate < dateFrom) matchesDate = false;
+                    if (dateTo && cardDate > dateTo) matchesDate = false;
+                }
+
+                return matchesTab && matchesSearch && matchesDate;
             });
 
             const totalFiltered = filteredCards.length;
