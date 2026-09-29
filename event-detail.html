@@ -150,7 +150,6 @@
                             </div>
                         </div>
 
-
                         <!-- Related Events Showcase -->
                         <div class="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-xs">
                             <div class="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-2.5 mb-5 sm:mb-6">
@@ -180,6 +179,306 @@
                          ========================================================= -->
                     <div class="lg:col-span-4 flex flex-col gap-5 sm:gap-6 lg:sticky lg:top-6">
                         
+                        <!-- =========================================================
+                             RIGHT SIDEBAR REGISTRATION & PASS WIDGET (PREMIUM)
+                             ========================================================= -->
+                        <div id="registerSection" class="scroll-mt-6"></div>
+                        <div id="sidebarRegCard" class="bg-white rounded-2xl border border-slate-200/90 shadow-sm relative overflow-hidden transition-all duration-300 scroll-mt-6">
+                            <!-- Top Decorative Accent -->
+                            <div class="h-1.5 w-full bg-gradient-to-r from-[#154a78] via-[#2986bb] to-[#9fe8ff]"></div>
+
+                            <div class="p-4 min-[400px]:p-5 sm:p-6">
+                                <!-- UPCOMING EVENT: REGISTRATION FORM CONTAINER IN SIDEBAR -->
+                                <div id="registrationFormContainer">
+                                    <!-- Header: Title & Status Badge -->
+                                    <div class="flex items-center justify-between gap-2 pb-3 mb-3.5 border-b border-slate-100">
+                                        <div>
+                                            <h3 class="text-sm sm:text-base font-bold text-slate-900 font-heading flex items-center gap-1.5">
+                                                <i data-lucide="ticket" class="w-4 h-4 text-[#154a78]"></i>
+                                                <span>Event Registration</span>
+                                            </h3>
+                                            <p class="text-[11.5px] text-slate-500 mt-0.5">Register below to get your instant entry pass</p>
+                                        </div>
+                                        <span id="sidebarStatusPill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60 shrink-0">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                            <span>Open</span>
+                                        </span>
+                                    </div>
+
+                                    <!-- Sidebar Form -->
+                                    <form id="eventRegistrationForm" onsubmit="handleEventRegistration(event)" class="space-y-2.5">
+                                        <!-- Full Name -->
+                                        <div>
+                                            <label for="regFullName" class="block text-[11px] font-semibold text-slate-700 mb-1">
+                                                Full Name <span class="text-rose-500">*</span>
+                                            </label>
+                                            <div class="relative">
+                                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                                    <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <input type="text" id="regFullName" required placeholder="e.g. Rahul Sharma"
+                                                    class="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition">
+                                            </div>
+                                        </div>
+
+                                        <!-- Email Address -->
+                                        <div>
+                                            <label for="regEmail" class="block text-[11px] font-semibold text-slate-700 mb-1">
+                                                Email Address <span class="text-rose-500">*</span>
+                                            </label>
+                                            <div class="relative">
+                                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                                    <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <input type="email" id="regEmail" required placeholder="e.g. rahul@example.com"
+                                                    class="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition">
+                                            </div>
+                                        </div>
+
+                                        <!-- Phone Number -->
+                                        <div>
+                                            <label for="regPhone" class="block text-[11px] font-semibold text-slate-700 mb-1">
+                                                Phone / WhatsApp <span class="text-rose-500">*</span>
+                                            </label>
+                                            <div class="relative">
+                                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                                    <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <input type="tel" id="regPhone" required placeholder="e.g. +91 98160 12345"
+                                                    class="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition">
+                                            </div>
+                                        </div>
+
+                                        <!-- City & Number of Passes Grid -->
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <!-- City -->
+                                            <div>
+                                                <label for="regCity" class="block text-[11px] font-semibold text-slate-700 mb-1">
+                                                    City <span class="text-rose-500">*</span>
+                                                </label>
+                                                <select id="regCity" required
+                                                    class="w-full px-2 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition cursor-pointer">
+                                                    <option value="" disabled selected>Select city</option>
+                                                    <option value="Dharamshala">Dharamshala</option>
+                                                    <option value="Shimla">Shimla</option>
+                                                    <option value="Manali">Manali</option>
+                                                    <option value="Kullu">Kullu</option>
+                                                    <option value="Mandi">Mandi</option>
+                                                    <option value="Kangra">Kangra</option>
+                                                    <option value="Solan">Solan</option>
+                                                    <option value="Chandigarh">Chandigarh</option>
+                                                    <option value="Delhi NCR">Delhi NCR</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Number of Passes -->
+                                            <div>
+                                                <label for="regTickets" class="block text-[11px] font-semibold text-slate-700 mb-1">
+                                                    Passes <span class="text-rose-500">*</span>
+                                                </label>
+                                                <select id="regTickets" required
+                                                    class="w-full px-2 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition cursor-pointer">
+                                                    <option value="1">1 Solo Pass</option>
+                                                    <option value="2">2 Passes</option>
+                                                    <option value="3">3 Passes</option>
+                                                    <option value="4">4 Passes</option>
+                                                    <option value="5">5 Passes</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Category / Profession -->
+                                        <div>
+                                            <label for="regCategory" class="block text-[11px] font-semibold text-slate-700 mb-1">
+                                                Profession / Role <span class="text-rose-500">*</span>
+                                            </label>
+                                            <select id="regCategory" required
+                                                class="w-full px-2.5 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition cursor-pointer">
+                                                <option value="" disabled selected>Select role...</option>
+                                                <option value="Student / Graduate">Student / Graduate</option>
+                                                <option value="Software / Tech Professional">Software / Tech Professional</option>
+                                                <option value="Startup Founder / Entrepreneur">Startup Founder / Entrepreneur</option>
+                                                <option value="Artisan / Craftsperson">Artisan / Craftsperson</option>
+                                                <option value="Tourism & Eco-Guide">Tourism & Eco-Guide</option>
+                                                <option value="General Himalayan Enthusiast">General Himalayan Enthusiast</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- WhatsApp / Email updates checkbox -->
+                                        <div class="pt-0.5">
+                                            <label class="flex items-start gap-2 text-[11px] text-slate-600 cursor-pointer group">
+                                                <input type="checkbox" id="chkAlerts" checked
+                                                    class="mt-0.5 rounded border-slate-300 text-[#154a78] focus:ring-[#154a78]">
+                                                <span class="group-hover:text-slate-800 transition-colors leading-tight">
+                                                    Send pass with QR code to WhatsApp & Email.
+                                                </span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <div class="pt-1.5">
+                                            <button type="submit" id="submitRegBtn"
+                                                class="w-full bg-[#154a78] hover:bg-[#0f385c] text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-[0.99] group">
+                                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-300 shrink-0"></i>
+                                                <span id="btnSubmitText" class="whitespace-nowrap">Register Now</span>
+                                                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="flex items-center justify-center gap-1.5 text-[10.5px] text-slate-400 pt-0.5">
+                                            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i>
+                                            <span>Instant QR Pass • Verified Entry • No Spam</span>
+                                        </div>
+                                    </form>
+
+                                    <!-- Quick Perks Checklist in Sidebar -->
+                                    <div class="space-y-1.5 text-xs text-slate-600 pt-3.5 mt-3.5 border-t border-slate-100">
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                            <span>Instant Digital Pass with QR Code</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                            <span>Access to All Keynotes & Pavilions</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                            <span>WhatsApp & Email Event Reminders</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- SUCCESS STATE: DIGITAL PASS TICKET (Inside Sidebar) -->
+                                <div id="registrationSuccessContainer" class="hidden animate-fadeIn">
+                                    <div class="text-center pb-3 mb-3 border-b border-slate-100">
+                                        <div class="w-10 h-10 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-2 shadow-inner">
+                                            <i data-lucide="check" class="w-5 h-5 stroke-[2.5]"></i>
+                                        </div>
+                                        <span class="inline-block text-[10.5px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full mb-1">
+                                            Registration Confirmed!
+                                        </span>
+                                        <h4 class="text-sm sm:text-base font-bold text-slate-900 font-heading">
+                                            Your Himalayan Pass is Ready
+                                        </h4>
+                                        <p class="text-[11px] text-slate-500">
+                                            Show this digital pass at the entrance counter.
+                                        </p>
+                                    </div>
+
+                                    <!-- The Ticket Pass Card -->
+                                    <div class="bg-gradient-to-br from-slate-900 via-[#154a78] to-[#0f385c] text-white rounded-2xl p-4 shadow-lg border border-sky-400/20 relative overflow-hidden print-ticket mb-3">
+                                        <div class="flex items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-white/15">
+                                            <div class="flex items-center gap-1.5">
+                                                <div class="w-6 h-6 rounded-md bg-white/10 flex items-center justify-center font-black text-[10px] text-[#9fe8ff]">
+                                                    HD
+                                                </div>
+                                                <span class="text-[10px] font-bold tracking-wider text-[#9fe8ff] uppercase">HIMALAYA PASS</span>
+                                            </div>
+                                            <span id="passBadgeCategory" class="text-[9px] font-bold px-2 py-0.5 rounded bg-white/15 text-white">
+                                                TECH & AI
+                                            </span>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <h5 id="passEventTitle" class="text-xs sm:text-sm font-bold font-heading text-white leading-snug line-clamp-2">
+                                                Himalayan Tech & AI Summit 2025
+                                            </h5>
+                                            <div class="inline-flex items-center gap-1 mt-1 bg-emerald-400/20 text-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-mono">
+                                                <span>ID:</span>
+                                                <strong id="passCodeId">HD-784920</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-1.5 text-[11px] py-2 border-y border-dashed border-white/20">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sky-200/70">Attendee:</span>
+                                                <strong id="passHolderName" class="text-white truncate max-w-[140px]">Aarav Sharma</strong>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sky-200/70">Passes:</span>
+                                                <span id="passHolderCount" class="text-white font-medium">1 Solo Pass</span>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sky-200/70">Date:</span>
+                                                <span id="passEventDate" class="text-white font-medium">Nov 14 - 16, 2025</span>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sky-200/70">Time:</span>
+                                                <span id="passEventTime" class="text-white font-medium">09:30 AM - 05:30 PM</span>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sky-200/70">Venue:</span>
+                                                <span id="passEventVenue" class="text-white font-medium truncate max-w-[140px]">Dharamshala</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- QR code representation -->
+                                        <div class="pt-2.5 flex items-center justify-between gap-2">
+                                            <div>
+                                                <div class="flex items-center gap-1 text-emerald-400 text-[10px] font-bold">
+                                                    <i data-lucide="check-circle" class="w-3 h-3"></i>
+                                                    <span>VERIFIED ADMIT</span>
+                                                </div>
+                                                <span class="text-[9px] text-white/60">Scan at entrance</span>
+                                            </div>
+                                            <div class="w-12 h-12 bg-white p-1 rounded-lg shrink-0 flex items-center justify-center">
+                                                <svg class="w-full h-full text-slate-900" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 2h2v4h-2v-4zm-4-4h2v2h-2v-2zm2 2h2v2h-2v-2zm-2 2h2v4h-2v-4zm6-2h2v2h-2v-2zm0 4h2v2h-2v-2zm-2-8h2v2h-2v-2zm-6-2h4v2h-4v-2zm4 4h2v2h-2v-2z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Buttons in Sidebar -->
+                                    <div class="space-y-2">
+                                        <button onclick="printEventPass()"
+                                            class="w-full bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition shadow-2xs">
+                                            <i data-lucide="printer" class="w-3.5 h-3.5 text-[#154a78]"></i>
+                                            <span>Print / Save Pass</span>
+                                        </button>
+                                        <a id="btnCalendarLink" href="#" target="_blank" rel="noopener noreferrer"
+                                            class="w-full bg-[#154a78] hover:bg-[#0f385c] text-white font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition shadow-2xs">
+                                            <i data-lucide="calendar-plus" class="w-3.5 h-3.5 text-sky-300"></i>
+                                            <span>Add to Google Calendar</span>
+                                        </a>
+                                        <button onclick="resetRegistrationForm()"
+                                            class="w-full text-slate-500 hover:text-slate-800 text-[11px] font-semibold py-1 flex items-center justify-center gap-1 transition">
+                                            <i data-lucide="user-plus" class="w-3 h-3"></i>
+                                            <span>Register Another Person</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- PAST EVENT: NOTICE & NEXT EDITION WAITLIST -->
+                                <div id="pastEventNoticeContainer" class="hidden text-center py-4">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 mx-auto flex items-center justify-center mb-2">
+                                        <i data-lucide="history" class="w-5 h-5"></i>
+                                    </div>
+                                    <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full mb-1">
+                                        Event Concluded
+                                    </span>
+                                    <h4 class="text-sm font-bold text-slate-900 font-heading mb-1">
+                                        Registrations Are Closed
+                                    </h4>
+                                    <p class="text-[11px] text-slate-500 mb-3 leading-relaxed">
+                                        This edition has ended. Enter your email below to get priority alerts for the 2026 edition!
+                                    </p>
+                                    <div class="space-y-2">
+                                        <input type="email" id="waitlistEmail" placeholder="Enter your email for 2026 alert..."
+                                            class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#154a78]/20 focus:border-[#154a78] transition">
+                                        <button onclick="submitWaitlist()"
+                                            class="w-full bg-[#154a78] hover:bg-[#0f385c] text-white font-bold py-2 px-3 rounded-xl text-xs transition">
+                                            Notify Me for Next Edition
+                                        </button>
+                                    </div>
+                                    <p id="waitlistSuccess" class="hidden text-[11px] font-semibold text-emerald-600 mt-2">
+                                        ✓ You're on the list! We'll email you for the next edition.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Event Quick Information Card -->
                         <div class="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-xs">
                             <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 pb-2 border-b border-slate-100">
@@ -280,23 +579,39 @@
 
                 </div>
 
-            </div>
         </section>
+
+        <!-- =====================================================================
+             4. MOBILE STICKY REGISTRATION CTA (Visible on < 1024px screens)
+             ===================================================================== -->
+        <div id="mobileStickyBar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-4 py-3 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] flex items-center justify-between gap-3">
+            <div class="min-w-0">
+                <span class="block text-[10px] uppercase font-semibold text-slate-400 truncate">Himalaya Event Pass</span>
+                <span class="text-xs sm:text-sm font-bold text-slate-800 truncate block">Instant Entry Pass</span>
+            </div>
+            <a href="#registerSection" onclick="scrollToRegister(event)"
+                class="bg-[#154a78] hover:bg-[#0f385c] text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-1.5 shadow-sm active:scale-95 shrink-0">
+                <i data-lucide="ticket" class="w-3.5 h-3.5"></i>
+                <span id="mobileBarBtnText">Register Now</span>
+            </a>
+        </div>
     </main>
 
-    <!-- Interactive Script for Dynamic Content & Sharing -->
+    <!-- Interactive Script for Dynamic Content, Registration & Sharing -->
     <script>
-        // Event data repository
+        // Comprehensive Event data repository
         const eventsData = {
             'tech-summit': {
+                id: 'tech-summit',
                 title: 'Himalayan Tech & AI Summit 2025',
+                type: 'upcoming',
                 date: 'November 14 - 16, 2025',
                 time: '09:30 AM - 05:30 PM IST',
                 venue: 'International Convention Centre, Dharamshala, HP',
                 city: 'Dharamshala, Himachal Pradesh',
                 category: 'Tech & AI',
                 categoryBg: '#154a78',
-                price: 'Free Pass / Open Access',
+                calDates: '20251114T040000Z/20251116T120000Z',
                 image: './images/event-tech-summit.jpg',
                 host: 'PulsePlay Digital & Himalaya Tech Forum',
                 description: 'Join 500+ innovators, researchers, and developers in Dharamshala exploring AI, Software Engineering, and the 5000 Jobs Mission for the Himalayan region.',
@@ -304,14 +619,16 @@
                 mapUrl: 'https://maps.google.com/?q=Dharamshala+Himachal+Pradesh'
             },
             'culture-fest': {
+                id: 'culture-fest',
                 title: 'Himachal Cultural Heritage & Folk Music Utsav',
+                type: 'upcoming',
                 date: 'December 05 - 07, 2025',
                 time: '04:00 PM - 10:00 PM IST',
                 venue: 'The Ridge Pavilion, Shimla, HP',
                 city: 'Shimla, Himachal Pradesh',
                 category: 'Art & Culture',
                 categoryBg: '#8000ff',
-                price: 'Free Public Entry',
+                calDates: '20251205T103000Z/20251207T163000Z',
                 image: './images/event-culture-fest.jpg',
                 host: 'Himachal Arts & Tourism Council',
                 description: 'Experience authentic Pahadi Nati, soulful flutes, traditional Kullu folk instruments, dance performances, and Himalayan culinary wonders under starry Shimla skies.',
@@ -319,14 +636,16 @@
                 mapUrl: 'https://maps.google.com/?q=The+Ridge+Shimla'
             },
             'adventure-expo': {
+                id: 'adventure-expo',
                 title: 'Bir Billing Himalayan Adventure & Eco-Trekking Expo',
+                type: 'upcoming',
                 date: 'December 18 - 20, 2025',
                 time: '08:00 AM - 06:00 PM IST',
                 venue: 'Landing Ground, Bir Billing (Kangra Valley), HP',
                 city: 'Bir Billing, Kangra, HP',
                 category: 'Adventure & Eco',
                 categoryBg: '#00a86b',
-                price: 'Passes at Entry / Open Trial',
+                calDates: '20251218T023000Z/20251220T123000Z',
                 image: './images/event-adventure-summit.jpg',
                 host: 'Himalayan Aviators & Eco-Trek League',
                 description: 'The premier mountain adventure gathering at world-famous Bir Billing. Paragliding aerobatics, camping workshops, Leave No Trace environmental clinic, and trail runs.',
@@ -334,14 +653,16 @@
                 mapUrl: 'https://maps.google.com/?q=Bir+Billing+Himachal+Pradesh'
             },
             'startup-conclave': {
+                id: 'startup-conclave',
                 title: 'Himalayan Angel Investors & Startup Conclave',
+                type: 'upcoming',
                 date: 'January 10 - 11, 2026',
                 time: '10:00 AM - 05:00 PM IST',
                 venue: 'Cedar Woods Heritage Resort, Shimla, HP',
                 city: 'Shimla, Himachal Pradesh',
                 category: 'Startups & Capital',
                 categoryBg: '#e65100',
-                price: 'Delegate Entry',
+                calDates: '20260110T043000Z/20260111T113000Z',
                 image: './images/event-startup-conclave.jpg',
                 host: 'Himalayas Digital Capital & Startups Hub',
                 description: 'Connecting mountain startups in agro-tech, clean energy, eco-tourism, and handicrafts with angel investors and venture funds looking for high-growth Himalayan businesses.',
@@ -349,14 +670,15 @@
                 mapUrl: 'https://maps.google.com/?q=Shimla+Himachal+Pradesh'
             },
             'yoga-retreat': {
+                id: 'yoga-retreat',
                 title: 'McLeod Ganj Mindfulness, Yoga & Sound Retreat',
-                date: 'January 24 - 26, 2026',
+                type: 'past',
+                date: 'September 15 - 17, 2024',
                 time: '07:00 AM - 06:00 PM IST',
                 venue: 'Upper Bhagsu Pine Meadows, Dharamshala, HP',
                 city: 'McLeod Ganj, Dharamshala, HP',
                 category: 'Yoga & Wellness',
                 categoryBg: '#0284c7',
-                price: 'Open Meditation Sessions',
                 image: './images/event-yoga-retreat.jpg',
                 host: 'Dhyan Himalayan Wellness Guild',
                 description: 'Rejuvenate your soul with sunrise Pranayama, Tibetan singing bowl acoustics, meditation in pine forests, organic Sattvic Himalayan dining, and guided mountain walks.',
@@ -364,19 +686,70 @@
                 mapUrl: 'https://maps.google.com/?q=McLeod+Ganj+Dharamshala'
             },
             'handicraft-fair': {
+                id: 'handicraft-fair',
                 title: 'Kullu Shawl, Kangra Art & Handicrafts Fair',
-                date: 'February 06 - 08, 2026',
+                type: 'past',
+                date: 'August 02 - 04, 2024',
                 time: '10:00 AM - 07:00 PM IST',
                 venue: 'Mall Road Crafts Pavilion, Manali, HP',
                 city: 'Mall Road, Manali, HP',
                 category: 'Handicrafts & Art',
                 categoryBg: '#d97706',
-                price: 'Free Public Entry',
                 image: './images/event-handicraft-expo.jpg',
                 host: 'Himachal Weavers & Artisans Collective',
                 description: 'Celebrate the timeless master crafts of Himachal. Live wooden handloom weaving demonstrations, miniature Kangra painting masterclasses, and direct-from-artisan exhibitions.',
                 extraDesc: 'Discover genuine Kullu hand-woven shawls, Chamba Rumal embroidery, wooden lacquerware, and authentic Kangra miniature paintings with direct fair pricing.',
                 mapUrl: 'https://maps.google.com/?q=Mall+Road+Manali'
+            },
+            'apple-fest': {
+                id: 'apple-fest',
+                title: 'Himachal Apple Harvest & Agro-Innovation Expo',
+                type: 'upcoming',
+                date: 'October 24 - 26, 2025',
+                time: '09:00 AM - 05:00 PM IST',
+                venue: 'Horticultural Research Complex, Kotgarh (Shimla Hills), HP',
+                city: 'Kotgarh, Shimla, HP',
+                category: 'Agro & Organic',
+                categoryBg: '#16a34a',
+                calDates: '20251024T033000Z/20251026T113000Z',
+                image: './images/blog-apple-farming.jpg',
+                host: 'HP Horticulture & Agro Export Board',
+                description: 'Connecting orchard owners, agri-startups, and fruit logistics leaders to promote modern cold storage, organic apple cultivation, and global export chains for Himachal farmers.',
+                extraDesc: 'Interactive clinics on drone orchard spraying, sustainable packaging, and direct farm-to-table distribution channels across North India.',
+                mapUrl: 'https://maps.google.com/?q=Kotgarh+Shimla+Himachal+Pradesh'
+            },
+            'music-fest': {
+                id: 'music-fest',
+                title: 'Dhauladhar Mountain Folk & Acoustic Music Gathering',
+                type: 'upcoming',
+                date: 'November 28 - 30, 2025',
+                time: '05:00 PM - 10:30 PM IST',
+                venue: 'Tea Gardens Amphitheatre, Palampur, HP',
+                city: 'Palampur, Kangra, HP',
+                category: 'Music & Arts',
+                categoryBg: '#9333ea',
+                calDates: '20251128T113000Z/20251130T170000Z',
+                image: './images/blog-culture-fest.jpg',
+                host: 'Himalayan Acoustic Guild & Kangra Valley Foundation',
+                description: 'An open-air mountain music festival celebrating traditional Pahadi melodies, flute acoustics, and acoustic singer-songwriters amidst the fragrant tea gardens of Palampur.',
+                extraDesc: 'Features sunset jam sessions, indigenous instrument exhibitions, and cozy community bonfire storytelling with Himachali herbal teas.',
+                mapUrl: 'https://maps.google.com/?q=Palampur+Kangra+Himachal+Pradesh'
+            },
+            'eco-summit': {
+                id: 'eco-summit',
+                title: 'Western Himalayas Climate & Glacier Conservation Forum',
+                type: 'past',
+                date: 'June 12 - 14, 2024',
+                time: '10:00 AM - 04:00 PM IST',
+                venue: 'High-Altitude Research Centre, Kaza (Spiti Valley), HP',
+                city: 'Kaza, Spiti, HP',
+                category: 'Climate & Eco',
+                categoryBg: '#0891b2',
+                image: './images/blog-ecotourism.jpg',
+                host: 'Spiti Ecology Mission & Glaciology Research Wing',
+                description: 'High-altitude symposium examining glacier retreat, glacial lake outburst flood warnings, and indigenous water management in the cold desert of Spiti.',
+                extraDesc: 'Scientific panels and community workshops documenting traditional Spiti canal systems (Kuhl) and climate adaptation strategies for high mountain valleys.',
+                mapUrl: 'https://maps.google.com/?q=Kaza+Spiti+Valley'
             }
         };
 
@@ -406,6 +779,126 @@
         document.getElementById('sideHost').textContent = data.host;
         document.getElementById('sideMapLink').href = data.mapUrl;
 
+        // Check if event is upcoming or past
+        if (data.type === 'past') {
+            const formContainer = document.getElementById('registrationFormContainer');
+            const pastNoticeContainer = document.getElementById('pastEventNoticeContainer');
+            if (formContainer) formContainer.classList.add('hidden');
+            if (pastNoticeContainer) pastNoticeContainer.classList.remove('hidden');
+
+            const statusPill = document.getElementById('sidebarStatusPill');
+            if (statusPill) {
+                statusPill.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-slate-100 text-slate-600 border border-slate-200 shrink-0';
+                statusPill.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span><span>Registrations Closed</span>';
+            }
+
+            const mobileBtn = document.getElementById('mobileBarBtnText');
+            if (mobileBtn) mobileBtn.textContent = 'Join Waitlist';
+        }
+
+        // Smooth scroll to registration section
+        function scrollToRegister(e) {
+            if (e) e.preventDefault();
+            const section = document.getElementById('sidebarRegCard') || document.getElementById('registerSection');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                section.classList.add('focus-pulse');
+                setTimeout(() => section.classList.remove('focus-pulse'), 1200);
+
+                if (data && data.type !== 'past') {
+                    const nameInput = document.getElementById('regFullName');
+                    if (nameInput) setTimeout(() => nameInput.focus(), 450);
+                } else {
+                    const waitInput = document.getElementById('waitlistEmail');
+                    if (waitInput) setTimeout(() => waitInput.focus(), 450);
+                }
+            }
+        }
+
+        // Handle Form Submission and Digital Pass Generation
+        let currentTicketId = '';
+
+        function handleEventRegistration(e) {
+            e.preventDefault();
+            const name = document.getElementById('regFullName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const city = document.getElementById('regCity').value;
+            const category = document.getElementById('regCategory').value;
+            const tickets = document.getElementById('regTickets').value;
+
+            if (!name || !email || !phone || !city || !category) {
+                alert('Please complete all required fields.');
+                return;
+            }
+
+            // Generate clean unique ticket pass ID
+            currentTicketId = 'HD-' + Math.floor(100000 + Math.random() * 900000);
+
+            // Populate digital pass ticket
+            document.getElementById('passCodeId').textContent = currentTicketId;
+            document.getElementById('passEventTitle').textContent = data.title;
+            document.getElementById('passBadgeCategory').textContent = data.category.toUpperCase();
+            document.getElementById('passHolderName').textContent = name;
+            document.getElementById('passHolderCount').textContent = `${tickets} ${tickets === '1' ? 'Solo Pass' : 'Passes'} • ${city}`;
+            document.getElementById('passEventDate').textContent = data.date;
+            document.getElementById('passEventTime').textContent = data.time;
+            const passVenue = document.getElementById('passEventVenue');
+            if (passVenue) passVenue.textContent = data.venue;
+
+            // Generate Calendar link with pre-filled event details
+            const calBtn = document.getElementById('btnCalendarLink');
+            if (calBtn) {
+                const calTitle = encodeURIComponent(data.title);
+                const calDesc = encodeURIComponent(`Himalaya Digital Event Pass\nPass ID: ${currentTicketId}\nAttendee: ${name} (${tickets} Pass)\nCategory: ${category}\n\nVenue: ${data.venue}\nOrganized by: ${data.host}\n\n${data.description}`);
+                const calLoc = encodeURIComponent(data.venue);
+                const datesParam = data.calDates ? `&dates=${data.calDates}` : '';
+                calBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}${datesParam}&details=${calDesc}&location=${calLoc}`;
+            }
+
+            // Switch to success view
+            document.getElementById('registrationFormContainer').classList.add('hidden');
+            const successContainer = document.getElementById('registrationSuccessContainer');
+            successContainer.classList.remove('hidden');
+
+            // Scroll to pass
+            successContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        // Print or Save Pass function
+        function printEventPass() {
+            window.print();
+        }
+
+        // Reset registration form
+        function resetRegistrationForm() {
+            document.getElementById('eventRegistrationForm').reset();
+            document.getElementById('registrationSuccessContainer').classList.add('hidden');
+            document.getElementById('registrationFormContainer').classList.remove('hidden');
+            scrollToRegister();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        // Waitlist submission for past events
+        function submitWaitlist() {
+            const emailInput = document.getElementById('waitlistEmail');
+            if (!emailInput || !emailInput.value.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            const msg = document.getElementById('waitlistSuccess');
+            if (msg) {
+                msg.classList.remove('hidden');
+                emailInput.value = '';
+            }
+        }
+
         // Populate Related Events
         const relatedEl = document.getElementById('relatedEventsList');
         if (relatedEl) {
@@ -433,7 +926,7 @@
                             <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">${item.description}</p>
                         </div>
                     </div>
-                    <div class="p-3.5 sm:p-5 pt-0">
+                    <div class="p-3.5 sm:p-5 pt-0 flex items-center justify-between">
                         <a href="event-detail.html?id=${k}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#154a78] hover:text-[#0f385c] group/link">
                             <span>View Details</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-arrow-right w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -441,6 +934,10 @@
                                 <path d="m12 5 7 7-7 7"></path>
                             </svg>
                         </a>
+                        ${item.type === 'upcoming' 
+                            ? `<a href="event-detail.html?id=${k}#registerSection" class="text-[11px] font-bold bg-sky-50 text-[#154a78] hover:bg-[#154a78] hover:text-white px-2.5 py-1 rounded-lg border border-sky-200/80 transition-all">Register</a>`
+                            : `<span class="text-[10px] font-semibold text-slate-400">Past</span>`
+                        }
                     </div>
                 `;
                 relatedEl.appendChild(card);
@@ -464,6 +961,13 @@
             window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=450');
         }
 
+        // Check if URL hash has #registerSection or #sidebarRegCard to autofocus
+        if (window.location.hash === '#registerSection' || window.location.hash === '#sidebarRegCard') {
+            setTimeout(() => {
+                scrollToRegister();
+            }, 300);
+        }
+
         // Initialize Lucide icons
         if (window.lucide) {
             lucide.createIcons();
@@ -472,3 +976,4 @@
 </body>
 
 </html>
+

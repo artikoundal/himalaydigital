@@ -77,13 +77,10 @@
         <section class="py-6 sm:py-8 bg-[#f0f8fd]">
             <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12">
 
-                <!-- Clean Tabs: All, Categories & Simple Search -->
-                <div
-                    class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 pb-6 border-b border-slate-200/80">
-
-                    <!-- Clean Responsive Tab Switcher -->
+                <!-- Tier 1: Category Filter Tabs -->
+                <div class="flex items-center justify-between gap-3 pb-5 border-b border-slate-200/80">
                     <div
-                        class="flex items-center p-1 sm:p-1.5 bg-white border border-slate-200/90 rounded-2xl shadow-2xs max-w-full overflow-x-auto no-scrollbar gap-1 self-start sm:self-auto">
+                        class="flex items-center p-1 sm:p-1.5 bg-white border border-slate-200/90 rounded-2xl shadow-2xs max-w-full overflow-x-auto no-scrollbar gap-1">
                         <button onclick="switchBlogTab('all', this)"
                             class="blog-tab active px-3.5 min-[360px]:px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0">
                             All
@@ -109,17 +106,97 @@
                             Agriculture
                         </button>
                     </div>
+                </div>
 
-                    <!-- Clean Real-time Search Box -->
-                    <div class="relative w-full lg:w-72 shrink-0">
+                <!-- Tier 2: Real-time Search, Date Filter, Custom Date Pickers, Sort & Reset Toolbar -->
+                <div class="pt-4 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+
+                    <!-- Left: Search Box with Clear Button -->
+                    <div class="relative w-full lg:w-72 xl:w-80 shrink-0">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                             <i data-lucide="search" class="w-4 h-4 text-slate-400"></i>
                         </div>
                         <input type="text" id="blogSearch" oninput="filterSearch(this.value)"
-                            placeholder="Search articles, topics..."
-                            class="w-full bg-white text-slate-800 placeholder-slate-400 text-xs sm:text-sm rounded-xl pl-10 pr-4 py-2.5 border border-slate-200/90 focus:border-[#154a78] focus:ring-2 focus:ring-[#9fe8ff]/50 outline-none transition shadow-2xs">
+                            placeholder="Search articles, keywords..."
+                            class="w-full bg-white text-slate-800 placeholder-slate-400 text-xs sm:text-sm rounded-xl pl-10 pr-9 py-2.5 border border-slate-200/90 focus:border-[#154a78] focus:ring-2 focus:ring-[#9fe8ff]/50 outline-none transition shadow-2xs">
+                        <button id="clearSearchBtn" onclick="clearSearch()" type="button"
+                            class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition">
+                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                        </button>
                     </div>
 
+                    <!-- Right Controls: Date Presets, Custom Range, Sort & Reset -->
+                    <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto">
+
+                        <!-- Date Filter Dropdown -->
+                        <div class="relative flex-1 sm:flex-initial">
+                            <div
+                                class="flex items-center gap-1.5 bg-white border border-slate-200/90 rounded-xl px-3 py-2 shadow-2xs focus-within:border-[#154a78] focus-within:ring-2 focus-within:ring-[#9fe8ff]/50 transition">
+                                <i data-lucide="calendar" class="w-4 h-4 text-[#154a78] shrink-0"></i>
+                                <span class="text-xs font-semibold text-slate-500 hidden min-[480px]:inline">Date:</span>
+                                <select id="datePresetSelect" onchange="handleDatePresetChange(this.value)"
+                                    class="bg-transparent text-xs sm:text-sm font-medium text-slate-800 focus:outline-none cursor-pointer pr-1">
+                                    <option value="all">All Dates</option>
+                                    <option value="2025-10">October 2025</option>
+                                    <option value="2025-09">September 2025</option>
+                                    <option value="2025-08">August 2025</option>
+                                    <option value="2025-07">July 2025</option>
+                                    <option value="custom">Custom Date Range...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Custom Date Range Picker Container (Reveals when 'custom' is selected) -->
+                        <div id="customDateRangeBox"
+                            class="hidden flex-wrap sm:flex-nowrap items-center gap-2 bg-white border border-slate-200/90 rounded-xl px-2.5 py-1.5 shadow-2xs w-full sm:w-auto">
+                            <div class="flex items-center gap-1.5 flex-1 sm:flex-initial">
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">From</span>
+                                <input type="date" id="dateFrom" onchange="handleCustomDateChange()"
+                                    class="text-xs text-slate-700 bg-transparent focus:outline-none font-medium cursor-pointer">
+                            </div>
+                            <span class="text-slate-300 hidden sm:inline">&ndash;</span>
+                            <div class="flex items-center gap-1.5 flex-1 sm:flex-initial">
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">To</span>
+                                <input type="date" id="dateTo" onchange="handleCustomDateChange()"
+                                    class="text-xs text-slate-700 bg-transparent focus:outline-none font-medium cursor-pointer">
+                            </div>
+                            <button onclick="clearCustomDateRange()" type="button" title="Clear date range"
+                                class="text-slate-400 hover:text-rose-500 p-1 rounded-md hover:bg-slate-100 transition shrink-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Sort Order Dropdown -->
+                        <div class="relative flex-1 sm:flex-initial">
+                            <div
+                                class="flex items-center gap-1.5 bg-white border border-slate-200/90 rounded-xl px-3 py-2 shadow-2xs focus-within:border-[#154a78] focus-within:ring-2 focus-within:ring-[#9fe8ff]/50 transition">
+                                <i data-lucide="arrow-up-down" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                                <span class="text-xs font-semibold text-slate-500 hidden min-[480px]:inline">Sort:</span>
+                                <select id="sortOrderSelect" onchange="handleSortChange(this.value)"
+                                    class="bg-transparent text-xs sm:text-sm font-medium text-slate-800 focus:outline-none cursor-pointer pr-1">
+                                    <option value="newest">Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Reset All Filters Button -->
+                        <button id="resetFiltersBtn" onclick="resetAllFilters()" type="button"
+                            class="hidden items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 text-xs sm:text-sm font-medium rounded-xl border border-slate-200/80 transition shadow-2xs">
+                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                            <span>Reset Filters</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Active Filter Indicator Pills (Shown when search/date/category filters are active) -->
+                <div id="activeFilterPills" class="hidden flex-wrap items-center gap-2 pt-3">
+                    <span class="text-xs font-semibold text-slate-400">Active filters:</span>
+                    <div id="activeChipsContainer" class="flex flex-wrap items-center gap-1.5">
+                        <!-- Chips dynamically rendered here -->
+                    </div>
                 </div>
 
             </div>
@@ -193,11 +270,11 @@
         <!-- =====================================================================
              4. MAIN BLOG ARTICLES GRID (RESPONSIVE FROM 320PX UPWARDS)
              ===================================================================== -->
-        <section class="pb-16 sm:pb-20 bg-[#f0f8fd]">
+        <section id="blogsGridSection" class="pb-16 sm:pb-20 bg-[#f0f8fd]">
             <div class="max-w-[1240px] mx-auto px-3 sm:px-6 md:px-10 lg:px-12">
 
-                <!-- Section Header -->
-                <div class="flex items-center justify-between mb-6 sm:mb-8">
+                <!-- Section Header with Live Article Count -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
                     <div>
                         <h2 class="text-xl sm:text-2xl font-bold text-slate-900 font-heading">
                             Recent Articles & Insights
@@ -205,6 +282,14 @@
                         <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
                             Curated stories of culture, entrepreneurship, and mountain heritage
                         </p>
+                    </div>
+
+                    <!-- Live Count Indicator -->
+                    <div id="resultsCountBadge"
+                        class="self-start sm:self-auto text-xs font-semibold text-slate-600 bg-white border border-slate-200/90 rounded-xl px-3 py-1.5 shadow-2xs">
+                        Showing <span id="headerStartCount" class="text-[#154a78] font-bold">1</span>&ndash;<span
+                            id="headerEndCount" class="text-[#154a78] font-bold">6</span> of <span
+                            id="headerTotalCount" class="text-[#154a78] font-bold">12</span> articles
                     </div>
                 </div>
 
@@ -214,6 +299,7 @@
                     <!-- Article 1: Remote Work in Mountains -->
                     <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
                         data-category="tech"
+                        data-date="2025-10-12"
                         data-title="the mountain workation revolution why global techies are choosing dharamshala manali"
                         data-keywords="remote work tech digital nomads dharamshala manali coworking internet fiber">
                         <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
@@ -230,8 +316,8 @@
                                         <i data-lucide="clock" class="w-3 h-3"></i> 6 min read
                                     </span>
                                     <span>&bull;</span>
-                                    <span class="flex items-center gap-1">
-                                        <i data-lucide="calendar" class="w-3 h-3"></i> Oct 12, 2025
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Oct 12, 2025
                                     </span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
@@ -255,6 +341,7 @@
                     <!-- Article 2: Traditional Handicrafts & Shawls -->
                     <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
                         data-category="artisans"
+                        data-date="2025-10-08"
                         data-title="preserving heritage on loom the resilient artisans of kullu kinnaur shawls"
                         data-keywords="artisans handicrafts kullu kinnaur shawls weaving wool handloom tradition">
                         <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
@@ -271,8 +358,8 @@
                                         <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
                                     </span>
                                     <span>&bull;</span>
-                                    <span class="flex items-center gap-1">
-                                        <i data-lucide="calendar" class="w-3 h-3"></i> Oct 08, 2025
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Oct 08, 2025
                                     </span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
@@ -296,6 +383,7 @@
                     <!-- Article 3: Apple Farming & Agri-Tech -->
                     <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
                         data-category="agriculture"
+                        data-date="2025-09-29"
                         data-title="from mountain orchards to global markets tech transforming himachals apple belt"
                         data-keywords="agriculture apples farming kinnaur shimla tech supply chain organic cold storage">
                         <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
@@ -312,8 +400,8 @@
                                         <i data-lucide="clock" class="w-3 h-3"></i> 4 min read
                                     </span>
                                     <span>&bull;</span>
-                                    <span class="flex items-center gap-1">
-                                        <i data-lucide="calendar" class="w-3 h-3"></i> Sep 29, 2025
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Sep 29, 2025
                                     </span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
@@ -337,6 +425,7 @@
                     <!-- Article 4: Sustainable Eco-Tourism & Homestays -->
                     <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
                         data-category="tourism"
+                        data-date="2025-09-24"
                         data-title="slow living in the clouds sustainable homestays redefining himalayan travel"
                         data-keywords="ecotourism travel homestays hospitality mountains spiti parvati slow travel">
                         <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
@@ -353,8 +442,8 @@
                                         <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
                                     </span>
                                     <span>&bull;</span>
-                                    <span class="flex items-center gap-1">
-                                        <i data-lucide="calendar" class="w-3 h-3"></i> Sep 24, 2025
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Sep 24, 2025
                                     </span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
@@ -378,6 +467,7 @@
                     <!-- Article 5: 5000 Jobs Mission & Valley Tech -->
                     <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
                         data-category="tech"
+                        data-date="2025-09-18"
                         data-title="building mountain silicon valley inside the mission for 5000 high tech valley jobs"
                         data-keywords="5000 jobs mission pulseplay tech careers startups software engineering dharamshala">
                         <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
@@ -394,8 +484,8 @@
                                         <i data-lucide="clock" class="w-3 h-3"></i> 7 min read
                                     </span>
                                     <span>&bull;</span>
-                                    <span class="flex items-center gap-1">
-                                        <i data-lucide="calendar" class="w-3 h-3"></i> Sep 18, 2025
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Sep 18, 2025
                                     </span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
@@ -419,6 +509,7 @@
                     <!-- Article 6: Culture, Heritage & Himachali Dham -->
                     <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
                         data-category="culture"
+                        data-date="2025-09-10"
                         data-title="the sacred dham centuries of culinary rituals and community feasts in himachal"
                         data-keywords="culture dham food culinary heritage festivals mandial kangri chana madra bronze pots">
                         <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
@@ -435,8 +526,8 @@
                                         <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
                                     </span>
                                     <span>&bull;</span>
-                                    <span class="flex items-center gap-1">
-                                        <i data-lucide="calendar" class="w-3 h-3"></i> Sep 10, 2025
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Sep 10, 2025
                                     </span>
                                 </div>
                                 <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
@@ -457,6 +548,258 @@
                         </div>
                     </article>
 
+                    <!-- Article 7: Kangra Organic Green Tea -->
+                    <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
+                        data-category="agriculture"
+                        data-date="2025-09-02"
+                        data-title="reviving kangra green tea high altitude organic gardens embracing e commerce"
+                        data-keywords="agriculture tea kangra palampur organic green tea farming export dharamsala">
+                        <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
+                            <img src="./images/blog-apple-farming.jpg" alt="Kangra Valley Tea Gardens"
+                                class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-[#0d7a5f] text-white font-medium text-[11px] px-2.5 py-1 rounded-md shadow-xs">
+                                Agriculture
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium mb-2.5">
+                                    <span class="flex items-center gap-1">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> 4 min read
+                                    </span>
+                                    <span>&bull;</span>
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Sep 02, 2025
+                                    </span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
+                                    <a href="blog-detail.html?id=kangra-tea">Reviving Kangra Green Tea: High-Altitude Organic Gardens Embracing E-Commerce</a>
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                                    How historic tea estates in Dharamshala and Palampur are transitioning to organic cultivation and direct global dispatch within 48 hours.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                                <span class="text-xs font-medium text-slate-500">By Ramesh Katoch</span>
+                                <a href="blog-detail.html?id=kangra-tea"
+                                    class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                    <span>Read Article</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 8: Pine Needle Bio-Energy -->
+                    <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
+                        data-category="tech"
+                        data-date="2025-08-25"
+                        data-title="the pine needle revolution turning forest fire hazards into clean energy handicrafts"
+                        data-keywords="tech pine needles biomass clean energy environment wildfires bio coal briquettes">
+                        <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
+                            <img src="./images/event-tech-summit.jpg" alt="Pine Needle Briquetting Technology"
+                                class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-[#154a78] text-white font-medium text-[11px] px-2.5 py-1 rounded-md shadow-xs">
+                                Tech & Innovation
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium mb-2.5">
+                                    <span class="flex items-center gap-1">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
+                                    </span>
+                                    <span>&bull;</span>
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Aug 25, 2025
+                                    </span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
+                                    <a href="blog-detail.html?id=pine-needle-energy">The Pine Needle Revolution: Turning Forest Fire Hazards into Clean Energy & Handicrafts</a>
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                                    Innovative valley startups convert flammable pine needles into smokeless industrial bio-coal and natural fiber homeware products.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                                <span class="text-xs font-medium text-slate-500">By Priya Sharma</span>
+                                <a href="blog-detail.html?id=pine-needle-energy"
+                                    class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                    <span>Read Article</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 9: Astrotourism in Spiti -->
+                    <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
+                        data-category="tourism"
+                        data-date="2025-08-18"
+                        data-title="stargazing at 14000 feet the rise of high altitude astrotourism in spiti lahaul"
+                        data-keywords="tourism ecotourism spiti astrotourism stargazing dark sky milky way travel">
+                        <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
+                            <img src="./images/blog-ecotourism.jpg" alt="Dark Sky Stargazing in Spiti"
+                                class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-[#b45309] text-white font-medium text-[11px] px-2.5 py-1 rounded-md shadow-xs">
+                                Eco-Tourism
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium mb-2.5">
+                                    <span class="flex items-center gap-1">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> 6 min read
+                                    </span>
+                                    <span>&bull;</span>
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Aug 18, 2025
+                                    </span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
+                                    <a href="blog-detail.html?id=spiti-astrotourism">Stargazing at 14,000 Feet: The Rise of High-Altitude Astrotourism in Spiti & Lahaul</a>
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                                    Zero light pollution and crystalline mountain skies draw astronomy enthusiasts and astro-photographers to remote Himalayan dark-sky hubs.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                                <span class="text-xs font-medium text-slate-500">By Tenzin Norbu</span>
+                                <a href="blog-detail.html?id=spiti-astrotourism"
+                                    class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                    <span>Read Article</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 10: Pahari Miniature Painting -->
+                    <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
+                        data-category="culture"
+                        data-date="2025-08-10"
+                        data-title="pahari miniature painting preserving a 300 year old royal brushwork tradition"
+                        data-keywords="culture miniature art painting chamba kangra natural colors heritage">
+                        <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
+                            <img src="./images/blog-culture-fest.jpg" alt="Pahari Miniature Art Studio"
+                                class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-[#9333ea] text-white font-medium text-[11px] px-2.5 py-1 rounded-md shadow-xs">
+                                Culture & Heritage
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium mb-2.5">
+                                    <span class="flex items-center gap-1">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
+                                    </span>
+                                    <span>&bull;</span>
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Aug 10, 2025
+                                    </span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
+                                    <a href="blog-detail.html?id=pahari-painting">Pahari Miniature Painting: Preserving a 300-Year-Old Royal Brushwork Tradition</a>
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                                    Master artisans in Chamba and Kangra keep alive natural mineral pigments and single-hair squirrel brushes used in timeless Pahari paintings.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                                <span class="text-xs font-medium text-slate-500">By Vijay Sharma</span>
+                                <a href="blog-detail.html?id=pahari-painting"
+                                    class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                    <span>Read Article</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 11: Chamba Chappal & Metal Craft -->
+                    <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
+                        data-category="artisans"
+                        data-date="2025-07-28"
+                        data-title="chamba chappal cast metal guilds century old crafts finding global collectors"
+                        data-keywords="artisans chamba chappal leather embroidery metal cast handicrafts brass">
+                        <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
+                            <img src="./images/blog-handicrafts.jpg" alt="Chamba Artisanal Guilds"
+                                class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-[#200063] text-white font-medium text-[11px] px-2.5 py-1 rounded-md shadow-xs">
+                                Artisans & Crafts
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium mb-2.5">
+                                    <span class="flex items-center gap-1">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> 4 min read
+                                    </span>
+                                    <span>&bull;</span>
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Jul 28, 2025
+                                    </span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
+                                    <a href="blog-detail.html?id=chamba-crafts">Chamba Chappal & Cast Metal Guilds: Century-Old Crafts Finding Global Collectors</a>
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                                    Embroidered leather chappals and cast brass mohras with GI tag protection now reach international collectors via online marketplaces.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                                <span class="text-xs font-medium text-slate-500">By Sunita Sharma</span>
+                                <a href="blog-detail.html?id=chamba-crafts"
+                                    class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                    <span>Read Article</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 12: Mountain Drone Logistics -->
+                    <article class="blog-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs flex flex-col"
+                        data-category="tech"
+                        data-date="2025-07-15"
+                        data-title="mountain drone corridors delivering essential medical supplies across snowbound valleys"
+                        data-keywords="tech drones logistics medicine remote healthcare supply chain mountain delivery">
+                        <div class="relative card-image-wrap h-48 sm:h-52 overflow-hidden">
+                            <img src="./images/blog-remote-work.jpg" alt="Mountain Drone Logistics"
+                                class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-[#154a78] text-white font-medium text-[11px] px-2.5 py-1 rounded-md shadow-xs">
+                                Tech & Innovation
+                            </span>
+                        </div>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium mb-2.5">
+                                    <span class="flex items-center gap-1">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
+                                    </span>
+                                    <span>&bull;</span>
+                                    <span class="flex items-center gap-1 text-slate-500 font-semibold">
+                                        <i data-lucide="calendar" class="w-3 h-3 text-[#154a78]"></i> Jul 15, 2025
+                                    </span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug mb-2 hover:text-[#154a78] transition-colors line-clamp-2">
+                                    <a href="blog-detail.html?id=drone-logistics">Mountain Drone Corridors: Delivering Essential Medical Supplies Across Snowbound Valleys</a>
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed line-clamp-2 mb-4">
+                                    Autonomous heavy-payload drones traverse 13,000-foot Himalayan passes to connect remote tribal health centers during harsh winter road closures.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                                <span class="text-xs font-medium text-slate-500">By Arun Katoch</span>
+                                <a href="blog-detail.html?id=drone-logistics"
+                                    class="inline-flex items-center gap-1 text-xs font-semibold text-[#154a78] hover:text-[#0f385c] group">
+                                    <span>Read Article</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
                 </div>
 
                 <!-- No Results Notice (hidden by default) -->
@@ -464,73 +807,495 @@
                     class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200/80 shadow-xs mt-6">
                     <i data-lucide="file-question" class="w-10 h-10 text-slate-300 mx-auto mb-3"></i>
                     <p class="text-slate-700 font-medium text-sm sm:text-base">No articles found matching your criteria.</p>
-                    <p class="text-slate-400 text-xs mt-1">Try searching for keywords like "tech", "shawls", "orchards", or switch categories.</p>
+                    <p class="text-slate-400 text-xs mt-1">Try broadening your date range, clearing search terms, or switching categories.</p>
+                    <button onclick="resetAllFilters()" type="button"
+                        class="mt-4 inline-flex items-center gap-1.5 px-4 py-2 bg-[#154a78] hover:bg-[#0f385c] text-white text-xs font-semibold rounded-xl transition shadow-xs">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                        <span>Reset All Filters</span>
+                    </button>
+                </div>
+
+                <!-- Dynamic Pagination Container -->
+                <div id="paginationContainer"
+                    class="mt-10 pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                    <!-- Results Info Counter -->
+                    <div class="text-xs sm:text-sm text-slate-500 font-medium order-2 sm:order-1">
+                        Showing <span id="pageStartItem" class="font-bold text-slate-800">1</span> to <span
+                            id="pageEndItem" class="font-bold text-slate-800">6</span> of <span id="totalItemsCount"
+                            class="font-bold text-slate-800">12</span> articles
+                    </div>
+
+                    <!-- Page Navigation Controls -->
+                    <div class="flex items-center gap-1.5 sm:gap-2 order-1 sm:order-2">
+                        <button id="prevPageBtn" onclick="changePage(currentPage - 1)" type="button"
+                            class="pagination-btn inline-flex items-center gap-1 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 bg-white text-slate-700 shadow-2xs hover:bg-slate-50 transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            <span class="hidden min-[420px]:inline">Prev</span>
+                        </button>
+
+                        <div id="pageNumbersContainer" class="flex items-center gap-1">
+                            <!-- Page number buttons injected here dynamically -->
+                        </div>
+
+                        <button id="nextPageBtn" onclick="changePage(currentPage + 1)" type="button"
+                            class="pagination-btn inline-flex items-center gap-1 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 bg-white text-slate-700 shadow-2xs hover:bg-slate-50 transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                            <span class="hidden min-[420px]:inline">Next</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Per Page Selector -->
+                    <div class="flex items-center gap-2 text-xs text-slate-500 font-medium order-3">
+                        <span>Per page:</span>
+                        <select id="itemsPerPageSelect" onchange="changeItemsPerPage(this.value)"
+                            class="bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#154a78] cursor-pointer shadow-2xs">
+                            <option value="6" selected>6</option>
+                            <option value="3">3</option>
+                            <option value="9">9</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+
                 </div>
 
             </div>
         </section>
     </main>
 
-    <!-- Interactive Scripts for Filtering, Search, and Icons -->
+    <!-- Interactive Scripts for Filtering, Date Selection, Sorting, and Pagination -->
     <script>
+        // State variables
         let currentTab = 'all';
         let searchQuery = '';
+        let datePreset = 'all';
+        let dateFrom = '';
+        let dateTo = '';
+        let sortOrder = 'newest';
+        let currentPage = 1;
+        let itemsPerPage = 6;
 
+        // Category Tab Switcher
         function switchBlogTab(tab, btn) {
             currentTab = tab;
             document.querySelectorAll('.blog-tab').forEach(t => {
                 t.classList.remove('active');
             });
             btn.classList.add('active');
+            currentPage = 1;
             renderBlogs();
         }
 
+        // Live Search Filter
         function filterSearch(val) {
             searchQuery = val.toLowerCase().trim();
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) {
+                if (searchQuery) clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
+            }
+            currentPage = 1;
             renderBlogs();
         }
 
+        // Clear Search Box
+        function clearSearch() {
+            const input = document.getElementById('blogSearch');
+            if (input) input.value = '';
+            searchQuery = '';
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) clearBtn.classList.add('hidden');
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Date Preset Dropdown Change
+        function handleDatePresetChange(val) {
+            datePreset = val;
+            const customBox = document.getElementById('customDateRangeBox');
+
+            if (val === 'custom') {
+                if (customBox) customBox.classList.remove('hidden');
+                customBox.classList.add('flex');
+            } else {
+                if (customBox) {
+                    customBox.classList.remove('flex');
+                    customBox.classList.add('hidden');
+                }
+                dateFrom = '';
+                dateTo = '';
+                const fromInput = document.getElementById('dateFrom');
+                const toInput = document.getElementById('dateTo');
+                if (fromInput) fromInput.value = '';
+                if (toInput) toInput.value = '';
+            }
+
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Custom Date Range Inputs Change
+        function handleCustomDateChange() {
+            const fromInput = document.getElementById('dateFrom');
+            const toInput = document.getElementById('dateTo');
+            dateFrom = fromInput ? fromInput.value : '';
+            dateTo = toInput ? toInput.value : '';
+
+            // Ensure preset dropdown is in 'custom' mode
+            const presetSelect = document.getElementById('datePresetSelect');
+            if (presetSelect && presetSelect.value !== 'custom') {
+                presetSelect.value = 'custom';
+                datePreset = 'custom';
+            }
+
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Clear Custom Date Range
+        function clearCustomDateRange() {
+            const fromInput = document.getElementById('dateFrom');
+            const toInput = document.getElementById('dateTo');
+            if (fromInput) fromInput.value = '';
+            if (toInput) toInput.value = '';
+            dateFrom = '';
+            dateTo = '';
+
+            const presetSelect = document.getElementById('datePresetSelect');
+            if (presetSelect) presetSelect.value = 'all';
+            datePreset = 'all';
+
+            const customBox = document.getElementById('customDateRangeBox');
+            if (customBox) {
+                customBox.classList.remove('flex');
+                customBox.classList.add('hidden');
+            }
+
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Sort Order Change
+        function handleSortChange(val) {
+            sortOrder = val;
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Items Per Page Change
+        function changeItemsPerPage(val) {
+            itemsPerPage = parseInt(val, 10) || 6;
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Page Navigation
+        function changePage(page) {
+            const allCards = Array.from(document.querySelectorAll('#blogsGrid .blog-card'));
+            const filteredCount = allCards.filter(card => isCardMatching(card)).length;
+            const totalPages = Math.ceil(filteredCount / itemsPerPage) || 1;
+
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderBlogs();
+            scrollToBlogs();
+        }
+
+        // Smooth scroll to top of blogs section
+        function scrollToBlogs() {
+            const section = document.getElementById('blogsGridSection');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Check if card matches current filters
+        function isCardMatching(card) {
+            const category = card.getAttribute('data-category');
+            const cardDate = card.getAttribute('data-date') || '';
+            const title = (card.getAttribute('data-title') || '').toLowerCase();
+            const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+
+            // Category filter
+            const matchesTab = (currentTab === 'all' || category === currentTab);
+
+            // Search query filter
+            const matchesSearch = !searchQuery || title.includes(searchQuery) || keywords.includes(searchQuery);
+
+            // Date filter
+            let matchesDate = true;
+            if (datePreset !== 'all' && datePreset !== 'custom') {
+                matchesDate = cardDate.startsWith(datePreset);
+            } else if (datePreset === 'custom') {
+                if (dateFrom && cardDate < dateFrom) matchesDate = false;
+                if (dateTo && cardDate > dateTo) matchesDate = false;
+            }
+
+            return matchesTab && matchesSearch && matchesDate;
+        }
+
+        // Reset All Filters
+        function resetAllFilters() {
+            currentTab = 'all';
+            document.querySelectorAll('.blog-tab').forEach(t => {
+                if (t.textContent.trim() === 'All') t.classList.add('active');
+                else t.classList.remove('active');
+            });
+
+            clearSearch();
+
+            const presetSelect = document.getElementById('datePresetSelect');
+            if (presetSelect) presetSelect.value = 'all';
+            datePreset = 'all';
+
+            clearCustomDateRange();
+
+            const sortSelect = document.getElementById('sortOrderSelect');
+            if (sortSelect) sortSelect.value = 'newest';
+            sortOrder = 'newest';
+
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Remove single active filter chip
+        function removeFilterChip(type) {
+            if (type === 'tab') {
+                currentTab = 'all';
+                document.querySelectorAll('.blog-tab').forEach(t => {
+                    if (t.textContent.trim() === 'All') t.classList.add('active');
+                    else t.classList.remove('active');
+                });
+            } else if (type === 'search') {
+                clearSearch();
+                return;
+            } else if (type === 'date') {
+                clearCustomDateRange();
+                return;
+            }
+            currentPage = 1;
+            renderBlogs();
+        }
+
+        // Main Render Function
         function renderBlogs() {
-            const articles = document.querySelectorAll('#blogsGrid .blog-card');
+            const blogsGrid = document.getElementById('blogsGrid');
+            if (!blogsGrid) return;
+
+            const allCards = Array.from(blogsGrid.querySelectorAll('.blog-card'));
             const featured = document.getElementById('featuredSection');
-            let visibleCount = 0;
 
-            articles.forEach(card => {
-                const category = card.getAttribute('data-category');
-                const title = card.getAttribute('data-title').toLowerCase();
-                const keywords = card.getAttribute('data-keywords').toLowerCase();
+            // 1. Filter matching cards
+            const filteredCards = allCards.filter(card => isCardMatching(card));
 
-                const matchesTab = (currentTab === 'all' || category === currentTab);
-                const matchesSearch = !searchQuery || title.includes(searchQuery) || keywords.includes(searchQuery);
-
-                if (matchesTab && matchesSearch) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
+            // 2. Sort matching cards
+            filteredCards.sort((a, b) => {
+                const dateA = a.getAttribute('data-date') || '';
+                const dateB = b.getAttribute('data-date') || '';
+                if (sortOrder === 'newest') {
+                    return dateB.localeCompare(dateA);
                 } else {
-                    card.classList.add('hidden');
+                    return dateA.localeCompare(dateB);
                 }
             });
 
-            // If user filters or searches, hide featured hero spotlight to avoid clutter
+            // 3. Re-append sorted cards in DOM
+            filteredCards.forEach(card => blogsGrid.appendChild(card));
+
+            // 4. Pagination calculations
+            const totalItems = filteredCards.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+
+            if (currentPage > totalPages) {
+                currentPage = 1;
+            }
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+            // 5. Visibility toggle
+            allCards.forEach(card => card.classList.add('hidden'));
+            filteredCards.slice(startIndex, endIndex).forEach(card => card.classList.remove('hidden'));
+
+            // 6. Featured card visibility: show only on Page 1 with no active search/filters
+            const hasActiveFilters = (currentTab !== 'all' || searchQuery !== '' || datePreset !== 'all' || dateFrom !== '' || dateTo !== '');
             if (featured) {
-                if (currentTab === 'all' && !searchQuery) {
+                if (!hasActiveFilters && currentPage === 1) {
                     featured.classList.remove('hidden');
                 } else {
                     featured.classList.add('hidden');
                 }
             }
 
+            // 7. No Results Notice
             const noRes = document.getElementById('noResults');
-            if (noRes) {
-                if (visibleCount === 0) noRes.classList.remove('hidden');
-                else noRes.classList.add('hidden');
+            const paginationContainer = document.getElementById('paginationContainer');
+
+            if (totalItems === 0) {
+                if (noRes) noRes.classList.remove('hidden');
+                if (paginationContainer) paginationContainer.classList.add('hidden');
+            } else {
+                if (noRes) noRes.classList.add('hidden');
+                if (paginationContainer) paginationContainer.classList.remove('hidden');
+            }
+
+            // 8. Update Reset Button Visibility
+            const resetBtn = document.getElementById('resetFiltersBtn');
+            if (resetBtn) {
+                if (hasActiveFilters || sortOrder !== 'newest') {
+                    resetBtn.classList.remove('hidden');
+                    resetBtn.classList.add('inline-flex');
+                } else {
+                    resetBtn.classList.add('hidden');
+                    resetBtn.classList.remove('inline-flex');
+                }
+            }
+
+            // 9. Update Live Counts in Header & Pagination
+            const headerStart = document.getElementById('headerStartCount');
+            const headerEnd = document.getElementById('headerEndCount');
+            const headerTotal = document.getElementById('headerTotalCount');
+            const pageStart = document.getElementById('pageStartItem');
+            const pageEnd = document.getElementById('pageEndItem');
+            const totalCountEl = document.getElementById('totalItemsCount');
+
+            const displayStart = totalItems === 0 ? 0 : startIndex + 1;
+            if (headerStart) headerStart.textContent = displayStart;
+            if (headerEnd) headerEnd.textContent = endIndex;
+            if (headerTotal) headerTotal.textContent = totalItems;
+            if (pageStart) pageStart.textContent = displayStart;
+            if (pageEnd) pageEnd.textContent = endIndex;
+            if (totalCountEl) totalCountEl.textContent = totalItems;
+
+            // 10. Update Pagination Buttons
+            renderPaginationButtons(totalPages);
+
+            // 11. Update Active Filter Chips
+            updateActiveFilterPills();
+
+            // 12. Refresh Lucide Icons
+            if (window.lucide) {
+                window.lucide.createIcons();
             }
         }
 
-        // Initialize Lucide icons
-        if (window.lucide) {
-            window.lucide.createIcons();
+        // Render Pagination Numbers and Next/Prev State
+        function renderPaginationButtons(totalPages) {
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+            const container = document.getElementById('pageNumbersContainer');
+
+            if (prevBtn) {
+                prevBtn.disabled = (currentPage <= 1);
+            }
+            if (nextBtn) {
+                nextBtn.disabled = (currentPage >= totalPages);
+            }
+
+            if (container) {
+                container.innerHTML = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = `pagination-btn w-8 sm:w-9 h-8 sm:h-9 flex items-center justify-center rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                        i === currentPage
+                            ? 'active'
+                            : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                    }`;
+                    btn.textContent = i;
+                    btn.onclick = () => {
+                        if (currentPage !== i) {
+                            currentPage = i;
+                            renderBlogs();
+                            scrollToBlogs();
+                        }
+                    };
+                    container.appendChild(btn);
+                }
+            }
         }
+
+        // Render Active Filter Chips
+        function updateActiveFilterPills() {
+            const pillsBar = document.getElementById('activeFilterPills');
+            const container = document.getElementById('activeChipsContainer');
+            if (!pillsBar || !container) return;
+
+            container.innerHTML = '';
+            let count = 0;
+
+            // Category Chip
+            if (currentTab !== 'all') {
+                const tabNames = {
+                    'tech': 'Tech & Innovation',
+                    'culture': 'Culture & Heritage',
+                    'artisans': 'Artisans & Crafts',
+                    'tourism': 'Eco-Tourism',
+                    'agriculture': 'Agriculture'
+                };
+                const chip = createChip(`Category: ${tabNames[currentTab] || currentTab}`, () => removeFilterChip('tab'));
+                container.appendChild(chip);
+                count++;
+            }
+
+            // Search Chip
+            if (searchQuery) {
+                const chip = createChip(`Search: "${searchQuery}"`, () => removeFilterChip('search'));
+                container.appendChild(chip);
+                count++;
+            }
+
+            // Date Chip
+            if (datePreset !== 'all' && datePreset !== 'custom') {
+                const presetNames = {
+                    '2025-10': 'October 2025',
+                    '2025-09': 'September 2025',
+                    '2025-08': 'August 2025',
+                    '2025-07': 'July 2025'
+                };
+                const chip = createChip(`Date: ${presetNames[datePreset] || datePreset}`, () => removeFilterChip('date'));
+                container.appendChild(chip);
+                count++;
+            } else if (datePreset === 'custom' && (dateFrom || dateTo)) {
+                let text = 'Date: ';
+                if (dateFrom && dateTo) text += `${dateFrom} to ${dateTo}`;
+                else if (dateFrom) text += `From ${dateFrom}`;
+                else if (dateTo) text += `Until ${dateTo}`;
+                const chip = createChip(text, () => removeFilterChip('date'));
+                container.appendChild(chip);
+                count++;
+            }
+
+            if (count > 0) {
+                pillsBar.classList.remove('hidden');
+                pillsBar.classList.add('flex');
+            } else {
+                pillsBar.classList.remove('flex');
+                pillsBar.classList.add('hidden');
+            }
+        }
+
+        // Helper: Create Filter Chip DOM Node
+        function createChip(label, onRemove) {
+            const chip = document.createElement('div');
+            chip.className = 'filter-chip inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-[#9fe8ff] text-[#154a78] text-xs font-semibold rounded-lg shadow-2xs';
+            chip.innerHTML = `
+                <span>${label}</span>
+                <button type="button" class="text-slate-400 hover:text-rose-600 transition ml-0.5 p-0.5">
+                    <i data-lucide="x" class="w-3 h-3"></i>
+                </button>
+            `;
+            chip.querySelector('button').onclick = onRemove;
+            return chip;
+        }
+
+        // Initial setup on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBlogs();
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
     </script>
 </body>
 
